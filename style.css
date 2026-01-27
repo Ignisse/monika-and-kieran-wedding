@@ -1,16 +1,28 @@
 /* 1. Global Reset */
+
+:root {
+    /* Colors extracted from your flower image */
+    --primary-orange: #d67b36;  /* The rose color */
+    --primary-blue: #5b87a8;    /* The blue flower color */
+    --accent-gold: #cfa86e;     /* The gold stems */
+    --bg-color: #fcfcfc;        /* A very soft off-white */
+    --text-color: #333333;
+
+    /* Fonts */
+    --body-font: 'Montserrat', sans-serif;
+    --fancy-font: 'Corinthia', cursive;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-
 body {
-    font-family: 'Montserrat', sans-serif; /* Change this later! */
-    line-height: 1.6;
-    color: #333;
-    scroll-behavior: smooth; /* Enables smooth scrolling when clicking nav links */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--body-font); /* Sets Montserrat as the default for everything */
+    font-weight: 400;
 }
 
 /* 2. Navigation */
@@ -28,7 +40,7 @@ nav {
 
 .logo {
     font-family: 'Corinthia', cursive;
-    font-size: ;
+    font-size: 2rem;
 }
 
 .nav-links {
@@ -43,28 +55,49 @@ nav {
     font-weight: bold;
 }
 
-/* 3. Hero Section (The Big Image) */
+/* 3. Hero Section (Framed Style) */
 .hero {
-    height: 100vh; /* Takes up full screen height */
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/your-photo.jpg');
-    background-size: cover;
-    background-position: center;
+    height: 100vh; /* Full screen height */
+    position: relative; /* Needed so we can position the flowers absolutely inside this box */
     display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: white;
+    background-color: var(--bg-color); /* Uses the off-white variable */
+    overflow: hidden; /* Prevents scrollbars if flowers stick out a tiny bit */
 }
 
-.hero h1 {
-    font-family: 'Corinthia', cursive;
-    font-size: 4rem;
+/* Typography Updates for the new look */
+.hero .intro {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--primary-blue); /* Using your wedding blue */
     margin-bottom: 1rem;
 }
 
+.hero h1.names {
+    font-family: var(--fancy-font); /* Uses Corinthia */
+    font-weight: 700; /* Makes the script a bit bolder/readable */
+    font-size: 7rem; /* Increased size because script fonts look smaller */
+    color: var(--text-color);
+    line-height: 1.0; /* Tighter line height helps script fonts look connected */
+    margin-bottom: 0.5rem;
+}
+
+.hero .amp {
+    color: var(--primary-orange); /* The "&" gets the orange pop */
+    font-style: italic;
+}
+
+.hero .date {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
 .cta-button {
     display: inline-block;
-    background: #d4a373; /* Gold/Tan color */
+    background: var(--primary-orange); /* Orange button */
     color: white;
     padding: 10px 30px;
     text-decoration: none;
@@ -74,7 +107,39 @@ nav {
 }
 
 .cta-button:hover {
-    background: #b08d55;
+    background: #b56020; /* Darker orange on hover */
+}
+
+/* FLOWER POSITIONING */
+.floral-frame {
+    position: absolute;
+    width: 500px; /* Adjust this size based on how big you want them */
+    max-width: 40vw; /* Ensures they don't get too huge on mobile */
+    z-index: 1; /* sits behind text if they overlap, or use 0 */
+    pointer-events: none; /* Lets clicks pass through to buttons if images overlap */
+}
+
+.top-left {
+    top: -20px; /* Pull it slightly off screen for a natural look */
+    left: -20px;
+    transform: rotate(180deg);/* No rotation needed if the image naturally points inward, 
+       otherwise use transform: rotate(...) */
+}
+
+.bottom-right {
+    bottom: -20px;
+    right: -20px;
+     /* Flips it to frame the opposite corner */
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .hero h1.names {
+        font-size: 3rem;
+    }
+    .floral-frame {
+        width: 300px; /* Smaller flowers on phones */
+    }
 }
 
 /* 4. General Sections */
@@ -104,7 +169,7 @@ nav {
 }
 
 .event-block h3 {
-    color: #d4a373; /* Matches your button color */
+    color: var(--primary-orange);
     margin-bottom: 0.5rem;
 }
 

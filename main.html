@@ -18,11 +18,18 @@
         </ul>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <p class="intro">Together with their families</p> <h1 class="names">Monika & Kieran</h1> <p class="date">May 16, 2026</p> <a href="#rsvp" class="cta-button">RSVP Now</a>
-        </div>
-    </header>
+    <header class="hero" style="top: -1px; left: 1px;">
+    <img src="media/flowers.png" alt="" class="floral-frame top-left" style="left: -72px; top: -47px;">
+    
+    <div class="hero-content">
+        <p class="intro">Together forever</p>
+        <h1 class="names">Monika <span class="amp">&amp;</span> Kieran</h1>
+        <p class="date">May 16, 2026</p>
+        <a href="#rsvp" class="cta-button">RSVP Now</a>
+    </div>
+
+    <img src="media/flowers.png" alt="" class="floral-frame bottom-right" style="right: -74px; bottom: -33px;">
+</header>
 
     <section id="story" class="container">
         <h2>Our Story</h2>
@@ -55,30 +62,30 @@
     <section id="rsvp" class="container">
     <h2>RSVP</h2>
     <p>We can't wait to celebrate with you! Please respond by April 1st, 2026.</p>
-    
-    <form name="rsvp" method="POST" data-netlify="true" class="rsvp-form">
+  <form name="rsvp" method="POST" data-netlify="true" class="rsvp-form">
+    <input type="hidden" name="form-name" value="rsvp">
+
+    <div class="form-group">
+        <label for="full-name">Full Name(s)</label>
+        <input type="text" id="full-name" name="name" placeholder="e.g. Jane Doe & Plus One" required>
+    </div>
+
+    <div class="form-group">
+        <label>Will you be attending?</label>
+        <div class="radio-group">
+            <label class="radio-label">
+                <input type="radio" name="attendance" value="Joyfully Accept" onclick="toggleRSVP(true)" required>
+                Joyfully Accept
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="attendance" value="Regretfully Decline" onclick="toggleRSVP(false)">
+                Regretfully Decline
+            </label>
+        </div>
+    </div>
+
+    <div id="conditional-fields" style="display: none;">
         
-        <input type="hidden" name="form-name" value="rsvp">
-
-        <div class="form-group">
-            <label for="full-name">Full Name(s)</label>
-            <input type="text" id="full-name" name="name" placeholder="e.g. Jane Doe & Plus One" required>
-        </div>
-
-        <div class="form-group">
-            <label>Will you be attending?</label>
-            <div class="radio-group">
-                <label class="radio-label">
-                    <input type="radio" name="attendance" value="Joyfully Accept" required>
-                    Joyfully Accept
-                </label>
-                <label class="radio-label">
-                    <input type="radio" name="attendance" value="Regretfully Decline">
-                    Regretfully Decline
-                </label>
-            </div>
-        </div>
-
         <div class="form-group">
             <label for="guests">Number of Guests</label>
             <select id="guests" name="guest-count">
@@ -92,11 +99,29 @@
 
         <div class="form-group">
             <label for="dietary">Dietary Restrictions or Song Requests</label>
-            <textarea id="dietary" name="notes" rows="4" placeholder="Vegetarian, allergies, or a song you'd love to hear!"></textarea>
+            <textarea id="dietary" name="notes" rows="4"></textarea>
         </div>
 
-        <button type="submit" class="submit-btn">Send RSVP</button>
-    </form>
+    </div> 
+    <button type="submit" class="submit-btn">Send RSVP</button>
+</form>
 </section>
+
+<script>
+    function toggleRSVP(isAttending) {
+        const fields = document.getElementById('conditional-fields');
+        const guestInput = document.getElementById('guests');
+
+        if (isAttending) {
+            // If attending: Show fields and make guest count required
+            fields.style.display = 'block';
+            guestInput.setAttribute('required', 'true');
+        } else {
+            // If NOT attending: Hide fields and remove required check
+            fields.style.display = 'none';
+            guestInput.removeAttribute('required');
+        }
+    }
+</script>
 </body>
 </html>
