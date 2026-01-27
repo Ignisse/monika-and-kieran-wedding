@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monika & Kieran's Wedding</title> <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">M & K</div> <ul class="nav-links">
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p class="intro">Together with their families</p> <h1 class="names">Monika & Kieran</h1> <p class="date">May 16, 2026</p> <a href="#rsvp" class="cta-button">RSVP Now</a>
+        </div>
+    </header>
+
+    <section id="story" class="container">
+        <h2>Our Story</h2>
+        <p>Write your beautiful story here...</p>
+    </section>
+
+    <section id="details" class="container">
+        <h2>The Details</h2>
+        <div class="timeline">
+            
+            <div class="event-block">
+                <h3>The Ceremony</h3>
+                <p class="time">12:00 PM</p> <p class="venue">Huntingdon Town Hall</p> <address>
+                    53 High Street<br>
+                    Huntingdon, PE29 3AQ </address>
+                <a href="https://maps.google.com/?q=Huntingdon+Town+Hall" target="_blank" class="map-link">View Map</a>
+            </div>
+
+            <div class="event-block">
+                <h3>The Reception</h3>
+                <p class="venue">The Mandeville Hall</p> <address>
+                    Thrapston Road<br>
+                    Kimbolton, PE28 0HW </address>
+                <a href="https://maps.google.com/?q=The+Mandeville+Hall+Kimbolton" target="_blank" class="map-link">View Map</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="rsvp" class="container">
+    <h2>RSVP</h2>
+    <p>We can't wait to celebrate with you! Please respond by April 1st, 2026.</p>
+    
+    <form name="rsvp" method="POST" data-netlify="true" class="rsvp-form">
+        
+        <input type="hidden" name="form-name" value="rsvp">
+
+        <div class="form-group">
+            <label for="full-name">Full Name(s)</label>
+            <input type="text" id="full-name" name="name" placeholder="e.g. Jane Doe & Plus One" required>
+        </div>
+
+        <div class="form-group">
+            <label>Will you be attending?</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="attendance" value="Joyfully Accept" required>
+                    Joyfully Accept
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="attendance" value="Regretfully Decline">
+                    Regretfully Decline
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests" name="guest-count">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="dietary">Dietary Restrictions or Song Requests</label>
+            <textarea id="dietary" name="notes" rows="4" placeholder="Vegetarian, allergies, or a song you'd love to hear!"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send RSVP</button>
+    </form>
+</section>
+</body>
+</html>

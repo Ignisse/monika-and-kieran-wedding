@@ -1,0 +1,199 @@
+/* 1. Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Change this later! */
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth; /* Enables smooth scrolling when clicking nav links */
+}
+
+/* 2. Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    position: sticky; /* Keeps nav at top while scrolling */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-family: 'Corinthia', cursive;
+    font-size: ;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* 3. Hero Section (The Big Image) */
+.hero {
+    height: 100vh; /* Takes up full screen height */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/your-photo.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-family: 'Corinthia', cursive;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #d4a373; /* Gold/Tan color */
+    color: white;
+    padding: 10px 30px;
+    text-decoration: none;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background: #b08d55;
+}
+
+/* 4. General Sections */
+.container {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto; /* Centers the content block */
+    text-align: center;
+}
+
+/* Timeline / Events Area */
+.timeline {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Space between the two blocks */
+    flex-wrap: wrap; /* Allows them to stack on small screens */
+    margin-top: 2rem;
+}
+
+.event-block {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    flex: 1; /* Both blocks take equal width */
+    min-width: 250px; /* Prevents them from getting too skinny */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.event-block h3 {
+    color: #d4a373; /* Matches your button color */
+    margin-bottom: 0.5rem;
+}
+
+.event-block .time {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.event-block address {
+    font-style: normal;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.map-link {
+    color: #333;
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+
+/* RSVP Form Styles */
+.rsvp-form {
+    max-width: 500px; /* Keeps form from getting too wide */
+    margin: 2rem auto; /* Centers the form */
+    text-align: left; /* Aligns labels to the left */
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Inputs and Select boxes */
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit; /* Uses your main font */
+    font-size: 1rem;
+}
+
+/* Focus styles for accessibility */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #d4a373; /* Gold/Tan highlight */
+    box-shadow: 0 0 5px rgba(212, 163, 115, 0.5);
+}
+
+/* Radio Buttons Layout */
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal !important;
+    cursor: pointer;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #333; /* Dark button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #d4a373; /* Turns gold/tan on hover */
+}
