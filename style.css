@@ -1,14 +1,13 @@
 /* 1. Global Reset */
 html {
     scroll-behavior: smooth;
-    /* This ensures the title isn't hidden behind your sticky navbar when you jump */
     scroll-padding-top: 100px; 
 }
 
 html, body {
     max-width: 100%;
-    overflow-x: hidden;
     position: relative;
+    margin: 0;
 }
 
 :root {
@@ -44,6 +43,10 @@ body {
     margin: 0; /* Sets Montserrat as the default for everything */
     font-weight: 400;
 }
+.hero, .container, section {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
 
 /* 2. Navigation */
 nav {
@@ -52,10 +55,11 @@ nav {
     align-items: center;
     padding: 0.5rem 2rem;
     background-color: var(--primary-blue);
-    position: sticky; /* Keeps nav at top while scrolling */
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 2000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .logo {
@@ -106,36 +110,35 @@ nav {
 .hero {
     height: 95vh; /* Full screen height */
     height: 100dvh;/* The fix: Dynamic Viewport Height */
-    position: relative; /* Needed so we can position the flowers absolutely inside this box */
+    position: relative; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-color: var(--bg-color); 
-    overflow: hidden; /* Prevents scrollbars if flowers stick out a tiny bit */
+    overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
-/* Typography Updates for the new look */
 .hero .intro {
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: var(--primary-blue); /* Using your wedding blue */
+    color: var(--primary-blue);
     margin-bottom: 1rem;
 }
 
 .hero h1.names {
-    font-family: var(--fancy-font); /* Uses Corinthia */
-    font-weight: 700; /* Makes the script a bit bolder/readable */
-    font-size: 7rem; /* Increased size because script fonts look smaller */
+    font-family: var(--fancy-font); 
+    font-weight: 700;
+    font-size: 7rem; 
     color: var(--text-color);
-    line-height: 1.0; /* Tighter line height helps script fonts look connected */
+    line-height: 1.0;
     margin-bottom: 0.5rem;
 }
 
 .hero .amp {
-    color: var(--primary-orange); /* The "&" gets the orange pop */
+    color: var(--accent-gold); 
     font-style: italic;
 }
 
@@ -181,91 +184,7 @@ nav {
      /* Flips it to frame the opposite corner */
 }
 
-/* Mobile Tweak */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex; /* Show hamburger on mobile */
-        z-index: 1001;
-    }
 
-    /* Mobile Navigation Overlay */
-    .nav-links {
-        position: fixed;
-        right: -100%; /* Hidden off-screen to the right */
-        top: 0;
-        flex-direction: column;
-        background-color: var(--primary-blue);
-        width: 100%;
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-        transition: 0.3s;
-        z-index: 1000;
-    }
-
-    /* When the menu is active/open */
-    .nav-links.active {
-        right: 0; /* Slide into view */
-    }
-
-    .nav-links li {
-        margin: 20px 0;
-    }
-
-    .nav-links a {
-        font-size: 1.5rem; /* Larger links for fingers */
-    }
-
-    /* Animate Hamburger into an "X" when active */
-    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
-    .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    .hero {
-        height: 100dvh;
-    }
-
-    .hero h1.names {
-        font-size: 3.5rem;
-        z-index: 10;
-        position: relative;
-    }
-
-    .top-left {
-        top: 0;
-        left: 0;
-    }
-
-    .bottom-right {
-        bottom: 0;
-        right: 0;
-    }
-
-    .floral-frame {
-        width: 200px; /* Much smaller on mobile */
-        max-width: 40vw;
-        z-index: 0;
-    }
-
-    .container {
-        margin: 1.5rem auto; /* Creates a small gap around the card */
-        width: 90%; /* Forces the card to stay within 90% of screen width */
-        padding: 2rem 1.5rem;
-        box-shadow: none; /* Optional: cleaner look on mobile */
-        border-radius: 8px;
-    }
-
-    .info-grid, .timeline {
-        grid-template-columns: 1fr;
-        display: block; /* Simpler stacking */
-        width: 100%;
-    }
-
-    .event-block {
-        margin-bottom: 1.5rem;
-        min-width: unset; /* Removes the minimum width that might cause overflow */
-    }
-}
 
 /* 4. General Sections */
 .container {
@@ -493,14 +412,10 @@ input:focus, select:focus, textarea:focus {
     margin-top: 1rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-    * {
-        transition: none !important;
-        animation: none !important;
-    }
+#conditional-fields,
+#rsvp-success,
+.hidden {
+    display: none; !important
 }
 
 /* Back to Top Button */
@@ -535,4 +450,100 @@ input:focus, select:focus, textarea:focus {
 #backToTop:hover {
     background-color: var(--primary-blue); /* Swaps color on hover */
     transform: translateY(-5px); /* Little jump effect */
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Show hamburger on mobile */
+        z-index: 1001;
+    }
+
+    /* Mobile Navigation Overlay */
+    .nav-links {
+        position: fixed;
+        right: -100%; /* Hidden off-screen to the right */
+        top: 0;
+        flex-direction: column;
+        background-color: var(--primary-blue);
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    /* When the menu is active/open */
+    .nav-links.active {
+        right: 0; /* Slide into view */
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem; /* Larger links for fingers */
+    }
+
+    /* Animate Hamburger into an "X" when active */
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .hero {
+        height: 100dvh;
+    }
+
+    .hero h1.names {
+        font-size: 3.5rem;
+        z-index: 10;
+        position: relative;
+    }
+
+    .top-left {
+        top: 0;
+        left: 0;
+    }
+
+    .bottom-right {
+        bottom: 0;
+        right: 0;
+    }
+
+    .floral-frame {
+        width: 200px; /* Much smaller on mobile */
+        max-width: 40vw;
+        z-index: 0;
+    }
+
+    .container {
+        margin: 1.5rem auto; /* Creates a small gap around the card */
+        width: 90%; /* Forces the card to stay within 90% of screen width */
+        padding: 2rem 1.5rem;
+        box-shadow: none; /* Optional: cleaner look on mobile */
+        border-radius: 8px;
+    }
+
+    .info-grid, .timeline {
+        grid-template-columns: 1fr;
+        display: block; /* Simpler stacking */
+        width: 100%;
+    }
+
+    .event-block {
+        margin-bottom: 1.5rem;
+        min-width: unset; /* Removes the minimum width that might cause overflow */
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
 }

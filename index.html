@@ -28,7 +28,7 @@
     </ul>
 </nav>
 
-    <header class="hero" style="top: -1px; left: 1px;">
+    <header class="hero">
     <img src="media/flowers.png" alt="" class="floral-frame top-left">
     
     <div class="hero-content">
@@ -40,7 +40,7 @@
 
     <img src="media/flowers.png" alt="" class="floral-frame bottom-right">
 </header>
-
+<main>
     <section id="story" class="container">
         <h2>Our Story</h2>
         <p>Write your beautiful story here...</p>
@@ -57,7 +57,7 @@
                 <address>
                 53 High Street<br>
                 Huntingdon, PE29 3AQ </address>
-                <a href="https://www.google.com/maps/search/Huntingdon+Town+Hall,+53+High+Street,+Huntingdon,+PE29+3AQ" target="_blank" class="map-link">View Map</a>
+                <a href="https://www.google.com/maps/search/Huntingdon+Town+Hall,+53+High+Street,+Huntingdon,+PE29+3AQ" target="_blank" rel="noopener" class="map-link">View Map</a>
             </div>
 
             <div class="event-block">
@@ -67,7 +67,7 @@
                     <address>
                     Thrapston Road<br>
                     Kimbolton, PE28 0HW </address>
-                <a href="https://www.google.com/maps/search/The+Mandeville+Hall,+Thrapston+Road,+Kimbolton,+PE28+0HW" target="_blank" class="map-link">View Map</a>
+                <a href="https://www.google.com/maps/search/The+Mandeville+Hall,+Thrapston+Road,+Kimbolton,+PE28+0HW" target="_blank" rel="noopener" class="map-link">View Map</a>
             </div>
 
         </div>
@@ -130,7 +130,7 @@
   <form name="rsvp" method="POST" data-netlify="true" class="rsvp-form" netlify-honeypot="bot-field" action="/" class="rsvp-form">
     <input type="hidden" name="form-name" value="rsvp">
 
-    <p class="hidden" style="display:none;">
+    <p class="hidden">
         <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
     </p>
 
@@ -153,7 +153,7 @@
         </div>
     </div>
 
-    <div id="conditional-fields" style="display: none;">
+    <div id="conditional-fields">
         
         <div class="form-group">
             <label for="guests">Number of Guests</label>
@@ -174,15 +174,16 @@
     </div> 
     <button type="submit" class="submit-btn">Send RSVP</button>
 </form>
-<div id="rsvp-success" class="success-message" style="display: none;">
+
+<div id="rsvp-success" class="success-message">
     <h3>Thank You!</h3>
-    <p>Your RSVP has been sent.</p>
-    <p>We can't wait to see you!</p>
-    <button onclick="resetForm()" class="cta-button small-btn">Send Another</button>
+    <p id="success-text">Your RSVP has been sent.</p> <p id="success-subtext"></p> <button onclick="resetForm()" class="cta-button small-btn">Send Another</button>
 </div>
 </section>
 
 <button id="backToTop" title="Go to top">↑</button>
- <script src="script.js"></script>
+</main>
+<footer></footer>
+<script src="script.js"></script>
 </body>
 </html>

@@ -63,13 +63,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams(formData).toString(),
             })
-            .then(() => {
-                form.style.display = "none";
-                if(successMsg) successMsg.style.display = "block";
-            })
-            .catch((error) => {
-                alert("Oops! Something went wrong. Please try again.");
-            });
+            .then((response) => {
+    if (response.ok) {
+        // Get the values to see what they picked
+        const formData = new FormData(form);
+        const isAttending = formData.get('attendance') === 'Joyfully Accept';
+        
+        const mainText = document.getElementById("success-text");
+        const subText = document.getElementById("success-subtext");
+
+        // Swap the message based on their choice
+        if (isAttending) {
+            mainText.innerText = "Your RSVP has been sent.";
+            subText.innerText = "We can't wait to see you!";
+        } else {
+            mainText.innerText = "Thank you for letting us know.";
+            subText.innerText = "You will be missed!";
+        }
+
+        form.style.display = "none";
+        if(successMsg) successMsg.style.display = "block";
+    }
+})
         });
     }
 
