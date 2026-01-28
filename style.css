@@ -35,8 +35,8 @@ body {
     background-color: #f3f7fa; /* Fallback color just in case */
     color: var(--text-color);
     font-family: var(--body-font);
-    margin: 0;; /* Sets Montserrat as the default for everything */
-    font-weight: 400
+    margin: 0; /* Sets Montserrat as the default for everything */
+    font-weight: 400;
 }
 
 /* 2. Navigation */

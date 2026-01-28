@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
+   
 </head>
 <body>
 
@@ -120,8 +120,12 @@
     <section id="rsvp" class="container">
     <h2>RSVP</h2>
     <p>We can't wait to celebrate with you! Please respond by April 1st, 2026.</p>
-  <form name="rsvp" method="POST" data-netlify="true" class="rsvp-form">
+  <form name="rsvp" method="POST" data-netlify="true" class="rsvp-form" netlify-honeypot="bot-field" action="/" class="rsvp-form">
     <input type="hidden" name="form-name" value="rsvp">
+
+    <p class="hidden" style="display:none;">
+        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+    </p>
 
     <div class="form-group">
         <label for="full-name">Full Name(s)</label>
@@ -172,6 +176,6 @@
 </section>
 
 <button id="backToTop" title="Go to top">↑</button>
-
+ <script src="script.js"></script>
 </body>
 </html>
