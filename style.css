@@ -1,9 +1,14 @@
 /* 1. Global Reset */
+html {
+    scroll-behavior: smooth;
+    /* This ensures the title isn't hidden behind your sticky navbar when you jump */
+    scroll-padding-top: 100px; 
+}
 
 :root {
     /* Colors extracted from your flower image */
     --primary-orange: #d67b36;  /* The rose color */
-    --primary-blue: #5b87a8;    /* The blue flower color */
+    --primary-blue: #5695c8;    /* The blue flower color */
     --accent-gold: #cfa86e;     /* The gold stems */
     --bg-color: #fcfcfc;        /* A very soft off-white */
     --text-color: #333333;
@@ -19,10 +24,19 @@
     box-sizing: border-box;
 }
 body {
-    background-color: var(--bg-color);
+   background-image: linear-gradient(
+    to bottom, 
+        #93c8f0 0%,    /* Your Blue */
+        #fcfcfc 45%,   /* Off-White buffer start */
+        #fcfcfc 55%,   /* Off-White buffer end (creates a clean middle section) */
+        #ffbc65 100%   /* Your Orange */
+   );
+    background-attachment: fixed; /* Keeps the pretty gradient in place while you scroll */
+    background-color: #f3f7fa; /* Fallback color just in case */
     color: var(--text-color);
-    font-family: var(--body-font); /* Sets Montserrat as the default for everything */
-    font-weight: 400;
+    font-family: var(--body-font);
+    margin: 0;; /* Sets Montserrat as the default for everything */
+    font-weight: 400
 }
 
 /* 2. Navigation */
@@ -30,8 +44,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: white;
+    padding: 0.5rem 2rem;
+    background-color: var(--primary-blue);
     position: sticky; /* Keeps nav at top while scrolling */
     top: 0;
     z-index: 1000;
@@ -40,31 +54,46 @@ nav {
 
 .logo {
     font-family: 'Corinthia', cursive;
-    font-size: 2rem;
+    font-size: 3rem;
+    color: white;
+    line-height: 0.7;
+    margin-top: 5px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    margin: 0;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500; 
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Makes the links look neat and uniform */
+    transition: all 0.3s ease;
 }
+
+.nav-links a:hover {
+    color: var(--primary-orange);
+    text-shadow: 0 0 8px rgba(255,255,255,0.6); /* Adds a subtle glow */
+}
+
 
 /* 3. Hero Section (Framed Style) */
 .hero {
-    height: 100vh; /* Full screen height */
+    height: 95vh; /* Full screen height */
     position: relative; /* Needed so we can position the flowers absolutely inside this box */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: var(--bg-color); /* Uses the off-white variable */
+    background-color: var(--bg-color); 
     overflow: hidden; /* Prevents scrollbars if flowers stick out a tiny bit */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 /* Typography Updates for the new look */
@@ -113,7 +142,7 @@ nav {
 /* FLOWER POSITIONING */
 .floral-frame {
     position: absolute;
-    width: 500px; /* Adjust this size based on how big you want them */
+    width: 700px; /* Adjust this size based on how big you want them */
     max-width: 40vw; /* Ensures they don't get too huge on mobile */
     z-index: 1; /* sits behind text if they overlap, or use 0 */
     pointer-events: none; /* Lets clicks pass through to buttons if images overlap */
@@ -136,18 +165,38 @@ nav {
 @media (max-width: 768px) {
     .hero h1.names {
         font-size: 3rem;
+        position: relative; /* Allows z-index to work */
+        z-index: 10; /* Forces text to sit on top of flowers */
     }
     .floral-frame {
-        width: 300px; /* Smaller flowers on phones */
+        width: 300px;
+        z-index: 0; /* Forces flowers to sit behind text */
+        opacity: 0.8; /* Optional: fades them slightly on mobile so text is readable */
+    }
+    .container {
+        margin: 0; /* Remove the floating gap */
+        border-radius: 0; /* Square off the corners */
+        box-shadow: none; /* Remove shadow */
+        border-top: 1px solid #eee; /* Simple divider instead */
+    }
+    .info-grid {
+        grid-template-columns: 1fr; /* 1 column instead of 2 */
+        gap: 3rem;
     }
 }
 
 /* 4. General Sections */
 .container {
-    padding: 4rem 2rem;
+    background-color: var(--bg-color); 
+    padding: 4rem 3rem;
     max-width: 800px;
-    margin: 0 auto; /* Centers the content block */
+    margin: 4rem auto; /* Creates space between the cards */
+    
+    border-radius: 12px; /* Soft corners */
+    box-shadow: 0 10px 30px rgba(91, 135, 168, 0.1); /* A very subtle blue-ish shadow matches your theme */
     text-align: center;
+    position: relative; /* Ensures it sits above backgrounds */
+    z-index: 2;
 }
 
 /* Timeline / Events Area */
@@ -189,6 +238,70 @@ nav {
     color: #333;
     text-decoration: underline;
     font-size: 0.9rem;
+}
+
+/* Practical Info Styles */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 3rem;
+    text-align: left; /* Easier to read lists when left-aligned */
+    margin-top: 2rem;
+}
+
+.info-column h3 {
+    color: var(--primary-orange);
+    border-bottom: 2px solid var(--accent-gold);
+    padding-bottom: 10px;
+    margin-bottom: 1rem;
+    font-family: var(--body-font);
+}
+
+.info-intro {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+/* The Clean List Style */
+.practical-list {
+    list-style: none;
+    padding: 0;
+}
+
+.practical-list li {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee; /* Subtle divider */
+    padding-bottom: 0.5rem;
+}
+
+.practical-list li:last-child {
+    border-bottom: none;
+}
+
+.practical-list strong {
+    display: block; /* Forces name to own line */
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+}
+
+.practical-list .detail {
+    display: block;
+    font-size: 0.9rem;
+    color: #555;
+    margin: 4px 0;
+}
+
+.practical-list a {
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.practical-list a:hover {
+    text-decoration: underline;
 }
 
 /* RSVP Form Styles */
@@ -261,4 +374,83 @@ input:focus, select:focus, textarea:focus {
 
 .submit-btn:hover {
     background-color: #d4a373; /* Turns gold/tan on hover */
+}
+
+/* RSVP Success Message */
+.success-message {
+    text-align: center;
+    padding: 3rem;
+    background: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    animation: fadeIn 0.5s ease;
+}
+
+.success-message h3 {
+    color: var(--primary-orange);
+    font-size: 2rem;
+    font-family: var(--fancy-font);
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* Helper for animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Optional: Make the 'Send Another' button smaller */
+.small-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000; /* Stays on top of everything */
+    
+    width: 50px;
+    height: 50px;
+    
+    background-color: var(--primary-orange);
+    color: white;
+    border: none;
+    border-radius: 50%; /* Makes it a perfect circle */
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    
+    /* Hidden by default, fades in smoothly */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#backToTop:hover {
+    background-color: var(--primary-blue); /* Swaps color on hover */
+    transform: translateY(-5px); /* Little jump effect */
 }

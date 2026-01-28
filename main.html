@@ -6,20 +6,23 @@
     <title>Monika & Kieran's Wedding</title> <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">M & K</div> <ul class="nav-links">
-            <li><a href="#story">Our Story</a></li>
-            <li><a href="#details">Details</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-        </ul>
-    </nav>
+ <nav>
+    <div class="logo">M & K</div>
+    <ul class="nav-links">
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#details">The Day</a></li>     
+        <li><a href="#practical-info">Travel & Stay</a></li> 
+        <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+</nav>
 
     <header class="hero" style="top: -1px; left: 1px;">
-    <img src="media/flowers.png" alt="" class="floral-frame top-left" style="left: -72px; top: -47px;">
+    <img src="media/flowers.png" alt="" class="floral-frame top-left">
     
     <div class="hero-content">
         <p class="intro">Together forever</p>
@@ -28,7 +31,7 @@
         <a href="#rsvp" class="cta-button">RSVP Now</a>
     </div>
 
-    <img src="media/flowers.png" alt="" class="floral-frame bottom-right" style="right: -74px; bottom: -33px;">
+    <img src="media/flowers.png" alt="" class="floral-frame bottom-right">
 </header>
 
     <section id="story" class="container">
@@ -42,22 +45,77 @@
             
             <div class="event-block">
                 <h3>The Ceremony</h3>
-                <p class="time">12:00 PM</p> <p class="venue">Huntingdon Town Hall</p> <address>
-                    53 High Street<br>
-                    Huntingdon, PE29 3AQ </address>
-                <a href="https://maps.google.com/?q=Huntingdon+Town+Hall" target="_blank" class="map-link">View Map</a>
+                <p class="time">12:00 PM</p> 
+                <p class="venue">Huntingdon Town Hall</p> 
+                <address>
+                53 High Street<br>
+                Huntingdon, PE29 3AQ </address>
+                <a href="https://www.google.com/maps/search/Huntingdon+Town+Hall,+53+High+Street,+Huntingdon,+PE29+3AQ" target="_blank" class="map-link">View Map</a>
             </div>
 
             <div class="event-block">
                 <h3>The Reception</h3>
-                <p class="venue">The Mandeville Hall</p> <address>
+                <p class="time"></p>
+                <p class="venue">The Mandeville Hall</p> 
+                    <address>
                     Thrapston Road<br>
                     Kimbolton, PE28 0HW </address>
-                <a href="https://maps.google.com/?q=The+Mandeville+Hall+Kimbolton" target="_blank" class="map-link">View Map</a>
+                <a href="https://www.google.com/maps/search/The+Mandeville+Hall,+Thrapston+Road,+Kimbolton,+PE28+0HW" target="_blank" class="map-link">View Map</a>
             </div>
 
         </div>
     </section>
+
+    <section id="practical-info">
+    <div class="container">
+        <h2>Useful Information</h2>
+        
+        <div class="info-grid">
+            <div class="info-column">
+                <h3><i class="icon-bed"></i> Where to Stay</h3>
+                <p class="info-intro">We recommend booking early as there are limited hotels in the area.</p>
+                
+                <ul class="practical-list">
+                    <li>
+                        <strong>Hotel A</strong>
+                        <span class="detail">where</span>
+                        <a href="#" target="_blank" class="link">View Website</a>
+                    </li>
+                    <li>
+                        <strong>Hotel B</strong>
+                        <span class="detail">where</span>
+                        <a href="#" target="_blank" class="link">View Website</a>
+                    </li>
+                    <li>
+                        <strong>Hotel C</strong>
+                        <span class="detail">where</span>
+                        <a href="#" target="_blank" class="link">View Website</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-column">
+                <h3><i class="icon-car"></i> Taxis & Transport</h3>
+                <p class="info-intro">Please pre-book your taxis   .</p>
+                
+                <ul class="practical-list">
+                    <li>
+                        <strong>t1</strong>
+                        <a href="tel:" class="phone-link">0</a>
+                    </li>
+                    <li>
+                        <strong>t2</strong>
+                        <a href="tel:01" class="phone-link">01</a>
+                    </li>
+                    <li>
+                        <strong>t3</strong>
+                        <a href="tel:01" class="phone-link">01</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
     <section id="rsvp" class="container">
     <h2>RSVP</h2>
@@ -105,23 +163,15 @@
     </div> 
     <button type="submit" class="submit-btn">Send RSVP</button>
 </form>
+<div id="rsvp-success" class="success-message" style="display: none;">
+    <h3>Thank You!</h3>
+    <p>Your RSVP has been sent.</p>
+    <p>We can't wait to see you!</p>
+    <button onclick="resetForm()" class="cta-button small-btn">Send Another</button>
+</div>
 </section>
 
-<script>
-    function toggleRSVP(isAttending) {
-        const fields = document.getElementById('conditional-fields');
-        const guestInput = document.getElementById('guests');
+<button id="backToTop" title="Go to top">↑</button>
 
-        if (isAttending) {
-            // If attending: Show fields and make guest count required
-            fields.style.display = 'block';
-            guestInput.setAttribute('required', 'true');
-        } else {
-            // If NOT attending: Hide fields and remove required check
-            fields.style.display = 'none';
-            guestInput.removeAttribute('required');
-        }
-    }
-</script>
 </body>
 </html>
