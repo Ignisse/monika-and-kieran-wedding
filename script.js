@@ -1,7 +1,6 @@
 // script.js
 
 // --- 1. RSVP LOGIC (Global Functions) ---
-// Called directly by the HTML 'onclick' attributes
 function toggleRSVP(isAttending) {
     const fields = document.getElementById('conditional-fields');
     const guestInput = document.getElementById('guests');
@@ -72,5 +71,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Oops! Something went wrong. Please try again.");
             });
         });
+    }
+
+    //mobile menu toggle//
+    const menu = document.querySelector('#mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links a');
+
+    if (menu) {
+        // Toggle menu on icon click
+        menu.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        links.forEach(n => n.addEventListener('click', () => {
+            menu.classList.remove('active');
+            navLinks.classList.remove('active');
+        }));
+    }
+
+    const navHeight = document.querySelector('nav').offsetHeight;
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.style.height = `calc(100dvh - ${navHeight}px)`;
     }
 });

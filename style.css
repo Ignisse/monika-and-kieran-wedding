@@ -5,6 +5,12 @@ html {
     scroll-padding-top: 100px; 
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 :root {
     /* Colors extracted from your flower image */
     --primary-orange: #d67b36;  /* The rose color */
@@ -82,10 +88,24 @@ nav {
     text-shadow: 0 0 8px rgba(255,255,255,0.6); /* Adds a subtle glow */
 }
 
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
 
 /* 3. Hero Section (Framed Style) */
 .hero {
     height: 95vh; /* Full screen height */
+    height: 100dvh;/* The fix: Dynamic Viewport Height */
     position: relative; /* Needed so we can position the flowers absolutely inside this box */
     display: flex;
     justify-content: center;
@@ -163,25 +183,87 @@ nav {
 
 /* Mobile Tweak */
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Show hamburger on mobile */
+        z-index: 1001;
+    }
+
+    /* Mobile Navigation Overlay */
+    .nav-links {
+        position: fixed;
+        right: -100%; /* Hidden off-screen to the right */
+        top: 0;
+        flex-direction: column;
+        background-color: var(--primary-blue);
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    /* When the menu is active/open */
+    .nav-links.active {
+        right: 0; /* Slide into view */
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem; /* Larger links for fingers */
+    }
+
+    /* Animate Hamburger into an "X" when active */
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .hero {
+        height: 100dvh;
+    }
+
     .hero h1.names {
-        font-size: 3rem;
-        position: relative; /* Allows z-index to work */
-        z-index: 10; /* Forces text to sit on top of flowers */
+        font-size: 3.5rem;
+        z-index: 10;
+        position: relative;
     }
+
+    .top-left {
+        top: 0;
+        left: 0;
+    }
+
+    .bottom-right {
+        bottom: 0;
+        right: 0;
+    }
+
     .floral-frame {
-        width: 300px;
-        z-index: 0; /* Forces flowers to sit behind text */
-        opacity: 0.8; /* Optional: fades them slightly on mobile so text is readable */
+        width: 200px; /* Much smaller on mobile */
+        max-width: 40vw;
+        z-index: 0;
     }
+
     .container {
-        margin: 0; /* Remove the floating gap */
-        border-radius: 0; /* Square off the corners */
-        box-shadow: none; /* Remove shadow */
-        border-top: 1px solid #eee; /* Simple divider instead */
+        margin: 1.5rem auto; /* Creates a small gap around the card */
+        width: 90%; /* Forces the card to stay within 90% of screen width */
+        padding: 2rem 1.5rem;
+        box-shadow: none; /* Optional: cleaner look on mobile */
+        border-radius: 8px;
     }
-    .info-grid {
-        grid-template-columns: 1fr; /* 1 column instead of 2 */
-        gap: 3rem;
+
+    .info-grid, .timeline {
+        grid-template-columns: 1fr;
+        display: block; /* Simpler stacking */
+        width: 100%;
+    }
+
+    .event-block {
+        margin-bottom: 1.5rem;
+        min-width: unset; /* Removes the minimum width that might cause overflow */
     }
 }
 
