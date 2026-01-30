@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
    // --- AJAX Form Submission ---
+   const form = document.querySelector("form[name='rsvp']");
 if (form) {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
