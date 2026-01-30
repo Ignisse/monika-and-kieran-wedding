@@ -13,12 +13,30 @@
 <body>
     <div id="password-gateway" class="gateway-overlay">
         <div class="gateway-card">
-            <img src="media/flowers.png" alt="" class="gateway-flowers">
-            <h2>Welcome</h2>
-            <p>Please enter the code from your invitation</p>
+            <img src="media/flowers.png" alt="Orange and blue flowers" class="gateway-flowers">
+            <div class="lang-switch">
+                <span class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</span>
+                <span class="lang-btn" data-lang="sk" onclick="setLanguage('sk')">SK</span>
+            </div>
+
+            <h2>
+                <span class="lang-en">Welcome</span>
+                <span class="lang-sk">Vitajte</span>
+            </h2>
+            <p>
+                <span class="lang-en">Please enter the code from your invitation</span>
+                <span class="lang-sk">Zadajte kód z vašej pozvánky</span>
+            </p>
+
             <input type="text" id="pass-input" placeholder="Enter Code Here">
-            <button onclick="checkPassword()" class="cta-button">Enter Site</button>
-            <p id="pass-error" class="error-msg">Incorrect code. Please check your invite.</p>
+            <button onclick="checkPassword()" class="cta-button">
+                <span class="lang-en">Enter Site</span>
+                <span class="lang-sk">Vstúpiť</span>
+            </button>
+            <p id="pass-error" class="error-msg">
+                <span class="lang-en">Incorrect code. Please check your invite.</span>
+                <span class="lang-sk">Nesprávny kód. Prosím skontrolujte vašu pozvánku.</span>
+            </p>
         </div>
     </div>
  <div id="main-content" class="hidden-content">
@@ -32,55 +50,119 @@
     </div>
     
     <ul class="nav-links">
-        <li><a href="#story">Our Story</a></li>
-        <li><a href="#details">The Day</a></li>     
-        <li><a href="#practical-info">Travel & Stay</a></li> 
-        <li><a href="#rsvp">RSVP</a></li>
+        
+        <li>
+            <a href="#story">
+                <span class="lang-en">Our Story</span>
+                <span class="lang-sk">Náš príbeh</span>
+            </a>
+        </li>
+        <li>
+            <a href="#details">
+                <span class="lang-en">The Day</span>
+                <span class="lang-sk">Harmonogram</span>
+            </a>
+        </li>     
+        <li>
+            <a href="#practical-info">
+                <span class="lang-en">Travel & Stay</span>
+                <span class="lang-sk">Doprava a ubytovanie</span>
+            </a>
+        </li> 
+        <li>
+            <a href="#rsvp">
+                <span class="lang-en">RSVP</span>
+                <span class="lang-sk">Účasť</span>
+            </a>
+        </li>
+        <li>
+            <div class="lang-switch">
+                <span class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</span>
+                <span class="lang-btn" data-lang="sk" onclick="setLanguage('sk')">SK</span>
+            </div>
+        </li>
     </ul>
 </nav>
 
     <header class="hero">
-    <img src="media/flowers.png" alt="" class="floral-frame top-left">
+    <img src="media/flowers.png" alt="Orange and blue flowers" class="floral-frame top-left">
     
-    <div class="hero-content">
-        <p class="intro">Together forever</p>
+     <div class="hero-content">
+        <p class="intro">
+            <span class="lang-en">Together forever</span>
+            <span class="lang-sk">Navždy spolu</span>
+        </p>
         <h1 class="names">Monika <span class="amp">&amp;</span> Kieran</h1>
-        <p class="date">May 16, 2026</p>
-        <a href="#rsvp" class="cta-button">RSVP Now</a>
+        <p class="date">
+            <span class="lang-en">16 May, 2026</span>
+            <span class="lang-sk">16. Mája 2026</span>
+        </p>
+        <a href="#rsvp" class="cta-button">
+            <span class="lang-en">RSVP Now</span>
+            <span class="lang-sk">Potvrdiť účasť</span>
+        </a>
     </div>
 
-    <img src="media/flowers.png" alt="" class="floral-frame bottom-right">
+    <img src="media/flowers.png" alt="Orange and blue flowers" class="floral-frame bottom-right">
 </header>
 <main>
-    <section id="story" class="container">
-        <h2>Our Story</h2>
-        <p>Monika and Kieran first met each other online playing World of Warcraft in October 2021. Over the following few months they got closer and began to talk to each other more and more until April 2022 when they officially started dating. In October that year, they met each other for the first time when Kieran travelled to Slovakia.</p>
-        <p>Since then, they have consistently travelled back and forth to see each other, visiting beautiful idyllic Slovak towns such as Banská Bystrica, Levoča and Stožok. Also visiting beautiful idyllic British towns such as London, Leeds, Reading, Slough and of course, the stunning, St. Neots.</p>
-<p>In November 2024, Kieran finally proposed and they both now look towards their wedding with excitement at beginning their life together.</p>
+     <section id="story" class="container">
+        <h2>
+            <span class="lang-en">Our Story</span>
+            <span class="lang-sk">Náš Príbeh</span>
+        </h2>
+        
+        <!-- You can wrap paragraphs like this to translate content later -->
+        <div class="lang-en">
+            <p>Monika and Kieran first met each other online playing World of Warcraft in October 2021. Over the following few months they got closer and began to talk to each other more and more until April 2022 when they officially started dating. In October that year, they met each other for the first time when Kieran travelled to Slovakia.</p>
+            <p>Since then, they have consistently travelled back and forth to see each other, visiting beautiful idyllic Slovak towns such as Banská Bystrica, Levoča and Stožok. Also visiting beautiful idyllic British towns such as London, Leeds, Reading, Slough and of course, the stunning, St. Neots.</p>
+            <p>In November 2024, Kieran finally proposed and they both now look towards their wedding with excitement at beginning their life together.</p>
+        </div>
+        
+        <div class="lang-sk">
+            <p>Monika a Kieran sa prvýkrát stretli online pri hraní World of Warcraft v októbri 2021. Počas nasledujúcich mesiacov sa zblížili, komunikovali spolu čoraz viac, a v apríli 2022 oficiálne začali spolu chodiť. V októbri toho istého roku sa prvýkrát stretli osobne, keď Kieran pricestoval na Slovensko.</p>
+            <p>Odvtedy pravidelne cestujú jeden za druhým, navštevujúc malebné slovenské mestá ako Banská Bystrica, Levoča a Stožok. Taktiež navštívili malebné britské mestá ako Londýn, Leeds, Reading, Slough a samozrejme, úchvatný St. Neots.</p>
+            <p>V novembri 2024 Kieran konečne požiadal Moniku o ruku a obaja sa teraz tešia na svadbu a začiatok spoločného života.</p>
+        </div>
     </section>
 
     <section id="details" class="container">
-        <h2>The Details</h2>
+        <h2>
+            <span class="lang-en">The Details</span>
+            <span class="lang-sk">Harmonogram</span>
+        </h2>
         <div class="timeline">
             
             <div id="ceremony-block" class="event-block">
-                <h3>The Ceremony</h3>
+                <h3>
+                    <span class="lang-en">The Ceremony</span>
+                    <span class="lang-sk">Obrad</span>
+                </h3>
                 <p class="time">12:00</p> 
                 <p class="venue">Huntingdon Town Hall</p> 
                 <address>
                 53 High Street<br>
                 Huntingdon, PE29 3AQ </address>
-                <a href="https://www.google.com/maps/search/Huntingdon+Town+Hall,+53+High+Street,+Huntingdon,+PE29+3AQ" target="_blank" rel="noopener" class="map-link">View Map</a>
+                <a href="https://www.google.com/maps/search/Huntingdon+Town+Hall,+53+High+Street,+Huntingdon,+PE29+3AQ" target="_blank" rel="noopener" class="map-link">
+                    <span class="lang-en">View Map</span>
+                    <span class="lang-sk">Mapa</span>
+                    </a>
             </div>
 
             <div class="event-block">
-                <h3>The Reception</h3>
+                <h3>
+                    <span class="lang-en">The Reception</span>
+                    <span class="lang-sk">Hostina</span>
+                </h3>
                 <p id="reception-time" class="time">18:00</p>
                 <p class="venue">The Mandeville Hall</p> 
                     <address>
                     Thrapston Road<br>
                     Kimbolton, PE28 0HW </address>
-                <a href="https://www.google.com/maps/search/The+Mandeville+Hall,+Thrapston+Road,+Kimbolton,+PE28+0HW" target="_blank" rel="noopener" class="map-link">View Map</a>
+                <a href="https://www.google.com/maps/search/The+Mandeville+Hall,+Thrapston+Road,+Kimbolton,+PE28+0HW" target="_blank" rel="noopener" class="map-link">
+                    <span class="lang-en">View Map</span>
+                    <span class="lang-sk">Mapa</span>
+                </a>
             </div>
 
         </div>
@@ -88,35 +170,61 @@
 
     <section id="practical-info">
     <div class="container">
-        <h2>Useful Information</h2>
+        <h2>
+            <span class="lang-en">Useful Information</span>
+            <span class="lang-sk">Užitočné Informácie</span>
+        </h2>
         
         <div class="info-grid">
             <div class="info-column">
-                <h3><i class="icon-bed"></i> Where to Stay</h3>
-                <p class="info-intro">We recommend booking early as there are limited hotels in the area.</p>
+                <h3>
+                    <i class="icon-bed"></i> 
+                    <span class="lang-en">Where to Stay</span>
+                    <span class="lang-sk">Ubytovanie</span>
+                </h3>
+                <p class="info-intro">
+                    <span class="lang-en">We recommend booking early as there are limited hotels in the area.</span>
+                    <span class="lang-sk">Odporúčame rezervovať ubytovanie včas, kapacity v okolí sú obmedzené.</span>
+                </p>
                 
                 <ul class="practical-list">
                     <li>
                         <strong>Hotel A</strong>
                         <span class="detail">where</span>
-                        <a href="#" target="_blank" class="link">View Website</a>
+                        <a href="#" target="_blank" class="link">
+                            <span class="lang-en">View Website</span>
+                            <span class="lang-sk">Webstránka</span>
+                        </a>
                     </li>
                     <li>
                         <strong>Hotel B</strong>
                         <span class="detail">where</span>
-                        <a href="#" target="_blank" class="link">View Website</a>
+                        <a href="#" target="_blank" class="link">
+                            <span class="lang-en">View Website</span>
+                            <span class="lang-sk">Webstránka</span>
+                        </a>
                     </li>
                     <li>
                         <strong>Hotel C</strong>
                         <span class="detail">where</span>
-                        <a href="#" target="_blank" class="link">View Website</a>
+                        <a href="#" target="_blank" class="link">
+                            <span class="lang-en">View Website</span>
+                            <span class="lang-sk">Webstránka</span>
+                        </a>
                     </li>
                 </ul>
             </div>
 
             <div class="info-column">
-                <h3><i class="icon-car"></i> Taxis & Transport</h3>
-                <p class="info-intro">Please pre-book your taxis   .</p>
+                <h3>
+                    <i class="icon-car"></i> 
+                    <span class="lang-en">Taxis & Transport</span>
+                    <span class="lang-sk">Taxi a Doprava</span>
+                </h3>
+                <p class="info-intro">
+                    <span class="lang-en">Please pre-book your taxis.</span>
+                    <span class="lang-sk">Prosíme, rezervujte si taxíky vopred.</span>
+                </p>
                 
                 <ul class="practical-list">
                     <li>
@@ -139,7 +247,10 @@
 
     <section id="rsvp" class="container">
     <h2>RSVP</h2>
-    <p>We can't wait to celebrate with you! Please respond by April 1st, 2026.</p>
+    <p>
+        <span class="lang-en">We can't wait to celebrate with you! Please respond by 5 April, 2026.</span>
+        <span class="lang-sk">Tešíme sa, že to s nami oslávite! Prosím potvrďte účasť do 5. apríla 2026.</span>
+    </p>
   <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/" class="rsvp-form">
     <input type="hidden" name="form-name" value="rsvp">
 
@@ -148,28 +259,39 @@
     </p>
 
     <div class="form-group">
-        <label for="full-name">Full Name(s)</label>
-        <input type="text" id="full-name" name="subject" placeholder="e.g. Jane Doe & Plus One" required>
+        <label for="full-name">
+            <span class="lang-en">Full Name(s)</span>
+            <span class="lang-sk">Celé Meno (Mená)</span>
+        </label>
+        <input type="text" id="full-name" name="subject" autocomplete="name" placeholder="e.g. Jane Doe & Plus One" required>
     </div>
 
 
 <div class="form-group">
-    <label>Will you be attending?</label>
+    <label>
+        <span class="lang-en">Will you be attending?</span>
+        <span class="lang-sk">Zúčastníte sa svadby?</span>
+    </label>
     <div class="radio-group">
         <label class="radio-label">
             <input type="radio" name="attendance" value="Yes" onclick="toggleRSVP(true)" required>
-            Joyfully Accept
+            <span class="lang-en">Joyfully Accept</span>
+            <span class="lang-sk">S radosťou prídem</span>
         </label>
         <label class="radio-label">
             <input type="radio" name="attendance" value="No" onclick="toggleRSVP(false)">
-            Regretfully Decline
+            <span class="lang-en">Regretfully Decline</span>
+            <span class="lang-sk">Bohužiaľ nemôžem</span>
         </label>
     </div>
 </div>
 
 <div id="guest-fields" class="hidden">
     <div class="form-group">
-        <label for="guests">Number of Guests</label>
+        <label for="guests">
+            <span class="lang-en">Number of Guests</span>
+            <span class="lang-sk">Počet hostí</span>
+        </label>
         <select id="guests" name="guest-count">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -182,16 +304,32 @@
 
 <div id="note-fields" class="hidden">
     <div class="form-group">
+        <!-- This label text is set by Javascript (script.js) -->
         <label for="notes" id="notes-label">Dietary Restrictions, Song Requests, or Other Notes</label>
         <textarea id="notes" name="notes" rows="4"></textarea>
     </div>
 </div>
-    <button type="submit" class="submit-btn">Send RSVP</button>
+    <button type="submit" class="submit-btn">
+        <span class="lang-en">Send RSVP</span>
+        <span class="lang-sk">Odoslať</span>
+    </button>
 </form>
 
 <div id="rsvp-success" class="success-message hidden">
-    <h3>Thank You!</h3>
-    <p id="success-text">Your RSVP has been sent.</p> <p id="success-subtext"></p> <button onclick="resetForm()" class="cta-button small-btn">Send Another</button>
+    <div class="lang-en">
+        <h3>Thank You!</h3>
+        <p>Your RSVP has been sent.</p>
+    </div>
+    
+    <div class="lang-sk">
+        <h3>Ďakujeme!</h3>
+        <p>Vaša odpoveď bola odoslaná.</p>
+    </div>
+    
+    <button onclick="resetForm()" class="cta-button small-btn">
+        <span class="lang-en">Send Another</span>
+        <span class="lang-sk">Poslať ďalší</span>
+    </button>
 </div>
 </section>
 

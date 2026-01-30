@@ -133,6 +133,7 @@ nav {
     display: flex;
     gap: 30px;
     margin: 0;
+    align-items: center; /* Ensures switcher aligns with text */
 }
 
 .nav-links a {
@@ -620,4 +621,98 @@ input:focus, select:focus, textarea:focus {
         transition: none !important;
         animation: none !important;
     }
+}
+
+/* --- Language Switching --- */
+html[lang="en"] .lang-sk {
+    display: none !important;
+}
+
+html[lang="sk"] .lang-en {
+    display: none !important;
+}
+
+/* Base Layout for Switcher Containers */
+.lang-switch {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: default; /* Cursor handled by buttons */
+}
+
+/* Base Button Style */
+.lang-btn {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 12px; /* Increased touch area */
+    transition: all 0.3s ease;
+    opacity: 0.6;
+    line-height: 1;
+    display: inline-block;
+}
+
+/* --- GATEWAY STYLES (Bordered Pills) --- */
+.gateway-card .lang-switch .lang-btn {
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: #888;
+    background: white;
+    min-width: 50px; /* Ensure consistent width */
+}
+
+.gateway-card .lang-switch .lang-btn:hover {
+    border-color: var(--primary-orange);
+    color: var(--primary-orange);
+    background: #fff8f0;
+    opacity: 1;
+}
+
+.gateway-card .lang-switch .lang-btn.active {
+    background-color: var(--primary-orange);
+    color: white;
+    border-color: var(--primary-orange);
+    opacity: 1;
+    box-shadow: 0 4px 10px rgba(214, 123, 54, 0.3);
+}
+
+/* --- NAVIGATION STYLES (Bigger Text) --- */
+.nav-lang-switch .lang-btn {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    padding: 10px; /* Generous touch target */
+    border: 1px solid transparent; /* Prevents layout shift on hover if we added border */
+    border-radius: 5px;
+}
+
+.nav-lang-switch .lang-btn:hover {
+    color: var(--primary-orange);
+    opacity: 1;
+}
+
+.nav-lang-switch .lang-btn.active {
+    color: white;
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+/* Mobile Menu Specifics */
+.nav-links.active .nav-lang-switch {
+    margin-bottom: 20px;
+}
+
+.nav-links.active .nav-lang-switch .lang-btn {
+    font-size: 1.4rem; /* Much bigger for mobile taps */
+    padding: 15px 25px;
+    border: 1px solid rgba(255,255,255,0.2); /* Subtle box for structure */
+    margin: 0 5px;
+}
+
+.nav-links.active .nav-lang-switch .lang-btn.active {
+    background: rgba(255,255,255,0.1);
+    text-decoration: none; /* Box style instead of underline for mobile */
+    border-color: white;
 }

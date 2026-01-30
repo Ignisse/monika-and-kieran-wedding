@@ -1,11 +1,59 @@
 // script.js
+function setLanguage(lang) {
+    // 1. Set the HTML tag attribute (controls CSS)
+    document.documentElement.lang = lang;
+    
+    // 2. Save preference so it remembers on reload
+    localStorage.setItem('wedding_lang', lang);
+
+    // 3. Update active state on all switcher buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // 4. Update dynamic JS text (like the RSVP label & Placeholders)
+    updateDynamicText(lang);
+}
+
+// Helper to update text that Javascript usually overwrites or attributes
+function updateDynamicText(lang) {
+    const notesLabel = document.getElementById('notes-label');
+    const nameInput = document.getElementById('full-name');
+    const passInput = document.getElementById('pass-input');
+    
+    // Check if user is currently attending (default to true if not checked yet to show generic text)
+    const yesRadio = document.querySelector('input[name="attendance"][value="Yes"]');
+    const isAttending = yesRadio ? yesRadio.checked : false;
+    
+    // 1. Update Note Label
+    if(notesLabel) {
+        if (lang === 'sk') {
+            notesLabel.innerText = isAttending ? "Diétne požiadavky alebo iné poznámky" : "Nechajte odkaz pre pár";
+        } else {
+            notesLabel.innerText = isAttending ? "Dietary Restrictions, Song Requests, or Other Notes" : "Leave a note for the couple";
+        }
+    }
+
+    // 2. Update Placeholders
+    if(nameInput) {
+        nameInput.placeholder = (lang === 'sk') ? "napr. Jana Nováková & Partner" : "e.g. Jane Doe & Plus One";
+    }
+    if(passInput) {
+        passInput.placeholder = (lang === 'sk') ? "Vložte kód sem" : "Enter Code Here";
+    }
+}
+
+// Check for saved language on load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('wedding_lang') || 'en';
+    setLanguage(savedLang);
+});
 
 // --- 1. RSVP LOGIC (Global Functions) ---
 function toggleRSVP(isAttending) {
-    // 1. Grab the elements by their NEW IDs
+    // 1. Grab the elements
     const guestFields = document.getElementById('guest-fields');
     const noteFields = document.getElementById('note-fields');
-    const notesLabel = document.getElementById('notes-label');
     const guestInput = document.getElementById('guests');
 
     // 2. Always show the Notes field (once they click a button)
@@ -17,24 +65,23 @@ function toggleRSVP(isAttending) {
         if (guestFields) guestFields.classList.remove('hidden');
         // Make it required
         if (guestInput) guestInput.setAttribute('required', 'true');
-        // Set label for Attendees
-        if (notesLabel) notesLabel.innerText = "Dietary Restrictions, Song Requests, or Other Notes";
     } else {
         // --- NO ---
         // Hide Guest Count
         if (guestFields) guestFields.classList.add('hidden');
         // Make it NOT required (so they can submit)
         if (guestInput) guestInput.removeAttribute('required');
-        // Set label for Regrets
-        if (notesLabel) notesLabel.innerText = "Leave a note for the couple";
     }
+
+    // 3. Update the label text based on current language
+    updateDynamicText(document.documentElement.lang);
 }
+
 function resetForm() {
     const form = document.querySelector("form[name='rsvp']");
     const successMsg = document.getElementById("rsvp-success");
     const guestFields = document.getElementById('guest-fields');
     const noteFields = document.getElementById('note-fields');
-    const notesLabel = document.getElementById('notes-label');
     
     // Reset Form UI
     if (successMsg) {
@@ -44,14 +91,15 @@ function resetForm() {
     if (form) {
         form.reset();
         form.classList.remove('hidden');
+        form.style.display = ""; // Clear inline style if any
     }
     
     // Reset to "Hidden" state using classes
     if (guestFields) guestFields.classList.add('hidden');
-    if (noteFields) noteFields.classList.add('hidden');
+    if (noteFields) guestFields.classList.add('hidden');
     
-    // Reset label text
-    if (notesLabel) notesLabel.innerText = "Dietary Restrictions, Song Requests, or Other Notes";
+    // Reset label text by calling the updater
+    updateDynamicText(document.documentElement.lang);
 }
 
 // --- 2. DOM LOADED EVENTS ---
@@ -80,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
    // --- AJAX Form Submission ---
    const form = document.querySelector("form[name='rsvp']");
-if (form) {
+   if (form) {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -93,20 +141,7 @@ if (form) {
         })
         .then((response) => {
             if (response.ok) {
-                const isAttending = formData.get('attendance') === 'Yes';
-                const mainText = document.getElementById("success-text");
-                const subText = document.getElementById("success-subtext");
-                
-                // ADD THIS LINE:
                 const successMsg = document.getElementById("rsvp-success"); 
-
-                if (isAttending) {
-                    mainText.innerText = "Your RSVP has been sent.";
-                    subText.innerText = "We can't wait to see you!";
-                } else {
-                    mainText.innerText = "Thank you for letting us know.";
-                    subText.innerText = "You will be missed!";
-                }
 
                 // Hide form and show success message
                 form.classList.add('hidden'); 
@@ -114,8 +149,8 @@ if (form) {
                     successMsg.classList.remove('hidden');
                     successMsg.style.display = "block";
                 }
-            } // Closing if (response.ok)
-        }) // Closing .then()
+            }
+        })
         .catch((error) => {
             alert("Oops! Something went wrong. Please try again.");
         });
