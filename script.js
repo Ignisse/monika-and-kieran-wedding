@@ -96,6 +96,9 @@ if (form) {
                 const isAttending = formData.get('attendance') === 'Yes';
                 const mainText = document.getElementById("success-text");
                 const subText = document.getElementById("success-subtext");
+                
+                // ADD THIS LINE:
+                const successMsg = document.getElementById("rsvp-success"); 
 
                 if (isAttending) {
                     mainText.innerText = "Your RSVP has been sent.";
