@@ -48,6 +48,64 @@ body {
     overflow-x: hidden;
 }
 
+/* Visibility Control Classes */
+.hidden-content,
+#ceremony-block.hidden,
+#pass-error,
+#rsvp-success,
+#conditional-fields,
+.hidden {
+    display: none;
+}
+
+/* Gateway Styles */
+.gateway-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to bottom, #93c8f0 0%, #fcfcfc 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.gateway-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    overflow: hidden;
+}
+
+.gateway-flowers {
+    width: 300px; 
+    height: auto;
+    transform: rotate(-135deg);
+    position: relative;
+    margin-top: -50px;
+    margin-bottom: -60px;
+    display: inline-block;
+}
+
+#pass-input {
+    margin-top: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.error-msg {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
 /* 2. Navigation */
 nav {
     display: flex;
@@ -172,16 +230,15 @@ nav {
 }
 
 .top-left {
-    top: -20px; /* Pull it slightly off screen for a natural look */
+    top: -20px; 
     left: -20px;
-    transform: rotate(180deg);/* No rotation needed if the image naturally points inward, 
-       otherwise use transform: rotate(...) */
+    transform: rotate(180deg);/
 }
 
 .bottom-right {
     bottom: -20px;
     right: -20px;
-     /* Flips it to frame the opposite corner */
+
 }
 
 
@@ -415,7 +472,7 @@ input:focus, select:focus, textarea:focus {
 #conditional-fields,
 #rsvp-success,
 .hidden {
-    display: none; !important
+    display: none !important;
 }
 
 /* Back to Top Button */
@@ -454,6 +511,18 @@ input:focus, select:focus, textarea:focus {
 
 /* Mobile Tweak */
 @media (max-width: 768px) {
+    .gateway-card {
+        padding: 2rem 1.5rem; 
+        width: 85%; 
+    }
+
+    /* 2. Shrink the flowers significantly for mobile */
+    .gateway-flowers {
+        width: 180px; 
+        margin-top: -30px;    
+        margin-bottom: -40px; 
+    }
+
     .menu-toggle {
         display: flex; /* Show hamburger on mobile */
         z-index: 1001;

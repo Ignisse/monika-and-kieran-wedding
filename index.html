@@ -9,9 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
    
 </head>
-<body>
 
- <nav>
+<body>
+    <div id="password-gateway" class="gateway-overlay">
+        <div class="gateway-card">
+            <img src="media/flowers.png" alt="" class="gateway-flowers">
+            <h2>Welcome</h2>
+            <p>Please enter the code from your invitation</p>
+            <input type="text" id="pass-input" placeholder="Enter Code Here">
+            <button onclick="checkPassword()" class="cta-button">Enter Site</button>
+            <p id="pass-error" class="error-msg">Incorrect code. Please check your invite.</p>
+        </div>
+    </div>
+ <div id="main-content" class="hidden-content">
+    <nav>
     <div class="logo">M & K</div>
     
     <div class="menu-toggle" id="mobile-menu">
@@ -50,9 +61,9 @@
         <h2>The Details</h2>
         <div class="timeline">
             
-            <div class="event-block">
+            <div id="ceremony-block" class="event-block">
                 <h3>The Ceremony</h3>
-                <p class="time">12:00 PM</p> 
+                <p class="time">12:00</p> 
                 <p class="venue">Huntingdon Town Hall</p> 
                 <address>
                 53 High Street<br>
@@ -62,7 +73,7 @@
 
             <div class="event-block">
                 <h3>The Reception</h3>
-                <p class="time"></p>
+                <p id="reception-time" class="time">18:00</p>
                 <p class="venue">The Mandeville Hall</p> 
                     <address>
                     Thrapston Road<br>
@@ -143,11 +154,11 @@
         <label>Will you be attending?</label>
         <div class="radio-group">
             <label class="radio-label">
-                <input type="radio" name="attendance" value="Joyfully Accept" onclick="toggleRSVP(true)" required>
+                <input type="radio" name="attendance" value="Yes" onclick="toggleRSVP(true)" required>
                 Joyfully Accept
             </label>
             <label class="radio-label">
-                <input type="radio" name="attendance" value="Regretfully Decline" onclick="toggleRSVP(false)">
+                <input type="radio" name="attendance" value="No" onclick="toggleRSVP(false)">
                 Regretfully Decline
             </label>
         </div>
@@ -184,6 +195,7 @@
 <button id="backToTop" title="Go to top">↑</button>
 </main>
 <footer></footer>
+ </div>
 <script src="script.js"></script>
 </body>
 </html>

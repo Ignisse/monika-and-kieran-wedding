@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (response.ok) {
         // Get the values to see what they picked
         const formData = new FormData(form);
-        const isAttending = formData.get('attendance') === 'Joyfully Accept';
+        const isAttending = formData.get('attendance') === 'Yes';
         
         const mainText = document.getElementById("success-text");
         const subText = document.getElementById("success-subtext");
@@ -113,3 +113,49 @@ document.addEventListener('DOMContentLoaded', () => {
         hero.style.height = `calc(100dvh - ${navHeight}px)`;
     }
 });
+
+const PASS_CEREMONY = "Q0VSRU1PTlkxNjUyNg==";
+const PASS_EVENING = "RVZFTklORzE2NTI2";
+
+function checkPassword() {
+    const input = document.getElementById('pass-input').value.trim().toUpperCase();
+    const error = document.getElementById('pass-error');
+    
+    if (btoa(input) === PASS_CEREMONY) {
+        unlockSite('ceremony');
+    } else if (btoa(input) === PASS_EVENING) {
+        unlockSite('evening');
+    } else {
+        error.style.display = 'block';
+    }
+}
+
+function unlockSite(type) {
+    // 1. Reveal the main site
+    document.getElementById('password-gateway').style.display = 'none';
+    document.getElementById('main-content').classList.remove('hidden-content');
+
+    const ceremonyBlock = document.getElementById('ceremony-block');
+    const receptionTime = document.getElementById('reception-time');
+
+    if (type === 'evening') {
+        // --- EVENING GUESTS ---
+        // Hide the Ceremony block
+        if (ceremonyBlock) ceremonyBlock.classList.add('hidden');
+        
+        // Ensure time is visible and set to 18:00
+        if (receptionTime) {
+            receptionTime.innerText = '18:00';
+            receptionTime.classList.remove('hidden');
+        }
+    } else {
+        // --- DAY GUESTS ---
+        // Ensure Ceremony block is visible
+        if (ceremonyBlock) ceremonyBlock.classList.remove('hidden');
+        
+        // HIDE the reception time (implies continuous flow)
+        if (receptionTime) receptionTime.classList.add('hidden');
+    }
+
+    localStorage.setItem('wedding_access', type);
+}
