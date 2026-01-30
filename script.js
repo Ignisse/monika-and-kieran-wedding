@@ -38,12 +38,12 @@ function resetForm() {
     
     // Reset Form UI
     if (successMsg) {
-        successMsg.classList.add('hidden'); // Re-lock it
+        successMsg.classList.add('hidden'); 
         successMsg.style.display = "none";
-    } // Or use classList.add('hidden') if you prefer
+    } 
     if (form) {
         form.reset();
-        form.style.display = "block"; // Or use classList.remove('hidden')
+        form.classList.remove('hidden');
     }
     
     // Reset to "Hidden" state using classes
