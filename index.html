@@ -143,15 +143,13 @@
   <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/" class="rsvp-form">
     <input type="hidden" name="form-name" value="rsvp">
 
-    <input type="hidden" name="subject" id="rsvp-subject">
-
     <p class="hidden">
         <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
     </p>
 
     <div class="form-group">
         <label for="full-name">Full Name(s)</label>
-        <input type="text" id="full-name" name="name" placeholder="e.g. Jane Doe & Plus One" required>
+        <input type="text" id="full-name" name="subject" placeholder="e.g. Jane Doe & Plus One" required>
     </div>
 
 

@@ -84,12 +84,6 @@ if (form) {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-const nameField = document.getElementById("full-name");
-        const subjectField = document.getElementById("rsvp-subject");
-        if (nameField && subjectField) {
-            subjectField.value = nameField.value; 
-        }
-
         const formData = new FormData(form);
 
         fetch("/", {
