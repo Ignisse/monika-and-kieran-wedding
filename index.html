@@ -43,12 +43,6 @@
     <nav>
     <div class="logo">M & K</div>
     
-    <div class="menu-toggle" id="mobile-menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </div>
-    
     <ul class="nav-links">
         
         <li>
@@ -75,13 +69,20 @@
                 <span class="lang-sk">Účasť</span>
             </a>
         </li>
-        <li>
-            <div class="lang-switch">
-                <span class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</span>
-                <span class="lang-btn" data-lang="sk" onclick="setLanguage('sk')">SK</span>
-            </div>
-        </li>
     </ul>
+    <div class="nav-actions">
+        <!-- Compact Switch -->
+        <div class="lang-switch nav-lang-switch">
+            <span class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</span>
+            <span class="separator">/</span>
+            <span class="lang-btn" data-lang="sk" onclick="setLanguage('sk')">SK</span>
+        </div>
+        
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
 </nav>
 
     <header class="hero">

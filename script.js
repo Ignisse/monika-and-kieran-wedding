@@ -28,7 +28,7 @@ function updateDynamicText(lang) {
     // 1. Update Note Label
     if(notesLabel) {
         if (lang === 'sk') {
-            notesLabel.innerText = isAttending ? "Diétne požiadavky alebo iné poznámky" : "Nechajte odkaz pre pár";
+            notesLabel.innerText = isAttending ? "Požiadavky na piesne alebo iné poznámky" : "Nechajte odkaz pre pár";
         } else {
             notesLabel.innerText = isAttending ? "Dietary Restrictions, Song Requests, or Other Notes" : "Leave a note for the couple";
         }
