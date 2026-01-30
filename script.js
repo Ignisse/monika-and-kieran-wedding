@@ -2,26 +2,53 @@
 
 // --- 1. RSVP LOGIC (Global Functions) ---
 function toggleRSVP(isAttending) {
-    const fields = document.getElementById('conditional-fields');
+    // 1. Grab the elements by their NEW IDs
+    const guestFields = document.getElementById('guest-fields');
+    const noteFields = document.getElementById('note-fields');
+    const notesLabel = document.getElementById('notes-label');
     const guestInput = document.getElementById('guests');
 
+    // 2. Always show the Notes field (once they click a button)
+    if (noteFields) noteFields.classList.remove('hidden');
+
     if (isAttending) {
-        fields.style.display = 'block';
-        guestInput.setAttribute('required', 'true');
+        // --- YES ---
+        // Show Guest Count
+        if (guestFields) guestFields.classList.remove('hidden');
+        // Make it required
+        if (guestInput) guestInput.setAttribute('required', 'true');
+        // Set label for Attendees
+        if (notesLabel) notesLabel.innerText = "Dietary Restrictions, Song Requests, or Other Notes";
     } else {
-        fields.style.display = 'none';
-        guestInput.removeAttribute('required');
+        // --- NO ---
+        // Hide Guest Count
+        if (guestFields) guestFields.classList.add('hidden');
+        // Make it NOT required (so they can submit)
+        if (guestInput) guestInput.removeAttribute('required');
+        // Set label for Regrets
+        if (notesLabel) notesLabel.innerText = "Leave a note for the couple";
     }
 }
-
 function resetForm() {
     const form = document.querySelector("form[name='rsvp']");
     const successMsg = document.getElementById("rsvp-success");
+    const guestFields = document.getElementById('guest-fields');
+    const noteFields = document.getElementById('note-fields');
+    const notesLabel = document.getElementById('notes-label');
     
-    successMsg.style.display = "none";
-    form.reset();
-    form.style.display = "block";
-    toggleRSVP(false); // Reset conditional fields
+    // Reset Form UI
+    if (successMsg) successMsg.style.display = "none"; // Or use classList.add('hidden') if you prefer
+    if (form) {
+        form.reset();
+        form.style.display = "block"; // Or use classList.remove('hidden')
+    }
+    
+    // Reset to "Hidden" state using classes
+    if (guestFields) guestFields.classList.add('hidden');
+    if (noteFields) noteFields.classList.add('hidden');
+    
+    // Reset label text
+    if (notesLabel) notesLabel.innerText = "Dietary Restrictions, Song Requests, or Other Notes";
 }
 
 // --- 2. DOM LOADED EVENTS ---

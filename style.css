@@ -11,11 +11,10 @@ html, body {
 }
 
 :root {
-    /* Colors extracted from your flower image */
-    --primary-orange: #d67b36;  /* The rose color */
-    --primary-blue: #5695c8;    /* The blue flower color */
-    --accent-gold: #cfa86e;     /* The gold stems */
-    --bg-color: #fcfcfc;        /* A very soft off-white */
+    --primary-orange: #d67b36;
+    --primary-blue: #5695c8;    
+    --accent-gold: #cfa86e;     
+    --bg-color: #fcfcfc;       
     --text-color: #333333;
 
     /* Fonts */
@@ -31,16 +30,16 @@ html, body {
 body {
    background-image: linear-gradient(
     to bottom, 
-        #93c8f0 0%,    /* Your Blue */
-        #fcfcfc 45%,   /* Off-White buffer start */
-        #fcfcfc 55%,   /* Off-White buffer end (creates a clean middle section) */
-        #ffbc65 100%   /* Your Orange */
+        #93c8f0 0%,    
+        #fcfcfc 45%,   
+        #fcfcfc 55%,   
+        #ffbc65 100%   
    );
-    background-attachment: fixed; /* Keeps the pretty gradient in place while you scroll */
-    background-color: #f3f7fa; /* Fallback color just in case */
+    background-attachment: fixed; 
+    background-color: #f3f7fa; 
     color: var(--text-color);
     font-family: var(--body-font);
-    margin: 0; /* Sets Montserrat as the default for everything */
+    margin: 0; 
     font-weight: 400;
 }
 .hero, .container, section {
@@ -52,12 +51,14 @@ body {
 .hidden-content,
 #ceremony-block.hidden,
 #pass-error,
-#rsvp-success,
-#conditional-fields,
 .hidden {
-    display: none;
+    display: none !important;
 }
 
+#rsvp-success,
+#conditional-fields {
+    display: none;
+}
 /* Gateway Styles */
 .gateway-overlay {
     position: fixed;
@@ -141,13 +142,13 @@ nav {
     font-weight: 500; 
     font-size: 0.95rem;
     letter-spacing: 1px;
-    text-transform: uppercase; /* Makes the links look neat and uniform */
+    text-transform: uppercase; 
     transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--primary-orange);
-    text-shadow: 0 0 8px rgba(255,255,255,0.6); /* Adds a subtle glow */
+    text-shadow: 0 0 8px rgba(255,255,255,0.6);
 }
 
 .menu-toggle {
@@ -166,8 +167,8 @@ nav {
 
 /* 3. Hero Section (Framed Style) */
 .hero {
-    height: 95vh; /* Full screen height */
-    height: 100dvh;/* The fix: Dynamic Viewport Height */
+    height: 100vh; /* Full screen height */
+    height: 100dvh;/* Dynamic Viewport Height */
     position: relative; 
     display: flex;
     justify-content: center;
@@ -207,7 +208,7 @@ nav {
 }
 .cta-button {
     display: inline-block;
-    background: var(--primary-orange); /* Orange button */
+    background: var(--primary-orange); 
     color: white;
     padding: 10px 30px;
     text-decoration: none;
@@ -217,43 +218,40 @@ nav {
 }
 
 .cta-button:hover {
-    background: #b56020; /* Darker orange on hover */
+    background: #b56020; 
 }
 
 /* FLOWER POSITIONING */
 .floral-frame {
     position: absolute;
-    width: 700px; /* Adjust this size based on how big you want them */
-    max-width: 40vw; /* Ensures they don't get too huge on mobile */
-    z-index: 1; /* sits behind text if they overlap, or use 0 */
-    pointer-events: none; /* Lets clicks pass through to buttons if images overlap */
+    width: 700px; 
+    max-width: 40vw; 
+    z-index: 1;
+    pointer-events: none;
 }
 
 .top-left {
     top: -20px; 
     left: -20px;
-    transform: rotate(180deg);/
+    transform: rotate(180deg);
 }
 
 .bottom-right {
     bottom: -20px;
     right: -20px;
-
 }
-
-
 
 /* 4. General Sections */
 .container {
     background-color: var(--bg-color); 
     padding: 4rem 3rem;
     max-width: 800px;
-    margin: 4rem auto; /* Creates space between the cards */
+    margin: 4rem auto; 
     
-    border-radius: 12px; /* Soft corners */
-    box-shadow: 0 10px 30px rgba(91, 135, 168, 0.1); /* A very subtle blue-ish shadow matches your theme */
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(91, 135, 168, 0.1); 
     text-align: center;
-    position: relative; /* Ensures it sits above backgrounds */
+    position: relative; 
     z-index: 2;
 }
 
@@ -261,8 +259,8 @@ nav {
 .timeline {
     display: flex;
     justify-content: center;
-    gap: 40px; /* Space between the two blocks */
-    flex-wrap: wrap; /* Allows them to stack on small screens */
+    gap: 40px; 
+    flex-wrap: wrap; 
     margin-top: 2rem;
 }
 
@@ -270,8 +268,8 @@ nav {
     background: #f9f9f9;
     padding: 2rem;
     border-radius: 8px;
-    flex: 1; /* Both blocks take equal width */
-    min-width: 250px; /* Prevents them from getting too skinny */
+    flex: 1; 
+    min-width: 250px; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
@@ -301,9 +299,9 @@ nav {
 /* Practical Info Styles */
 .info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-columns: 1fr 1fr; 
     gap: 3rem;
-    text-align: left; /* Easier to read lists when left-aligned */
+    text-align: left;
     margin-top: 2rem;
 }
 
@@ -330,7 +328,7 @@ nav {
 
 .practical-list li {
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid #eee; /* Subtle divider */
+    border-bottom: 1px solid #eee; 
     padding-bottom: 0.5rem;
 }
 
@@ -339,7 +337,7 @@ nav {
 }
 
 .practical-list strong {
-    display: block; /* Forces name to own line */
+    display: block; 
     font-size: 1.1rem;
     color: var(--primary-blue);
 }
@@ -364,9 +362,9 @@ nav {
 
 /* RSVP Form Styles */
 .rsvp-form {
-    max-width: 500px; /* Keeps form from getting too wide */
-    margin: 2rem auto; /* Centers the form */
-    text-align: left; /* Aligns labels to the left */
+    max-width: 500px; 
+    margin: 2rem auto; 
+    text-align: left;
     background: #fff;
     padding: 2rem;
     border-radius: 8px;
@@ -392,14 +390,14 @@ textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-family: inherit; /* Uses your main font */
+    font-family: inherit; 
     font-size: 1rem;
 }
 
 /* Focus styles for accessibility */
 input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: #d4a373; /* Gold/Tan highlight */
+    border-color: #d4a373;
     box-shadow: 0 0 5px rgba(212, 163, 115, 0.5);
 }
 
@@ -421,7 +419,7 @@ input:focus, select:focus, textarea:focus {
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background-color: #333; /* Dark button */
+    background-color: #333;
     color: white;
     border: none;
     border-radius: 5px;
@@ -431,7 +429,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .submit-btn:hover {
-    background-color: #d4a373; /* Turns gold/tan on hover */
+    background-color: #d4a373; 
 }
 
 /* RSVP Success Message */
@@ -462,7 +460,6 @@ input:focus, select:focus, textarea:focus {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Optional: Make the 'Send Another' button smaller */
 .small-btn {
     padding: 8px 20px;
     font-size: 0.9rem;
@@ -480,7 +477,7 @@ input:focus, select:focus, textarea:focus {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    z-index: 1000; /* Stays on top of everything */
+    z-index: 1000; 
     
     width: 50px;
     height: 50px;
@@ -488,12 +485,10 @@ input:focus, select:focus, textarea:focus {
     background-color: var(--primary-orange);
     color: white;
     border: none;
-    border-radius: 50%; /* Makes it a perfect circle */
+    border-radius: 50%; 
     font-size: 1.5rem;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    
-    /* Hidden by default, fades in smoothly */
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
@@ -505,8 +500,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 #backToTop:hover {
-    background-color: var(--primary-blue); /* Swaps color on hover */
-    transform: translateY(-5px); /* Little jump effect */
+    background-color: var(--primary-blue); 
+    transform: translateY(-5px);
 }
 
 /* Mobile Tweak */
@@ -516,7 +511,6 @@ input:focus, select:focus, textarea:focus {
         width: 85%; 
     }
 
-    /* 2. Shrink the flowers significantly for mobile */
     .gateway-flowers {
         width: 180px; 
         margin-top: -30px;    
@@ -524,14 +518,14 @@ input:focus, select:focus, textarea:focus {
     }
 
     .menu-toggle {
-        display: flex; /* Show hamburger on mobile */
+        display: flex; 
         z-index: 1001;
     }
 
     /* Mobile Navigation Overlay */
     .nav-links {
         position: fixed;
-        right: -100%; /* Hidden off-screen to the right */
+        right: -100%;
         top: 0;
         flex-direction: column;
         background-color: var(--primary-blue);
@@ -545,7 +539,7 @@ input:focus, select:focus, textarea:focus {
 
     /* When the menu is active/open */
     .nav-links.active {
-        right: 0; /* Slide into view */
+        right: 0;
     }
 
     .nav-links li {
@@ -553,7 +547,7 @@ input:focus, select:focus, textarea:focus {
     }
 
     .nav-links a {
-        font-size: 1.5rem; /* Larger links for fingers */
+        font-size: 1.5rem;
     }
 
     /* Animate Hamburger into an "X" when active */
@@ -582,28 +576,28 @@ input:focus, select:focus, textarea:focus {
     }
 
     .floral-frame {
-        width: 200px; /* Much smaller on mobile */
+        width: 200px; 
         max-width: 40vw;
         z-index: 0;
     }
 
     .container {
-        margin: 1.5rem auto; /* Creates a small gap around the card */
-        width: 90%; /* Forces the card to stay within 90% of screen width */
+        margin: 1.5rem auto; 
+        width: 90%; 
         padding: 2rem 1.5rem;
-        box-shadow: none; /* Optional: cleaner look on mobile */
+        box-shadow: none;
         border-radius: 8px;
     }
 
     .info-grid, .timeline {
         grid-template-columns: 1fr;
-        display: block; /* Simpler stacking */
+        display: block; 
         width: 100%;
     }
 
     .event-block {
         margin-bottom: 1.5rem;
-        min-width: unset; /* Removes the minimum width that might cause overflow */
+        min-width: unset;
     }
 }
 

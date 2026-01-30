@@ -150,39 +150,40 @@
         <input type="text" id="full-name" name="name" placeholder="e.g. Jane Doe & Plus One" required>
     </div>
 
-    <div class="form-group">
-        <label>Will you be attending?</label>
-        <div class="radio-group">
-            <label class="radio-label">
-                <input type="radio" name="attendance" value="Yes" onclick="toggleRSVP(true)" required>
-                Joyfully Accept
-            </label>
-            <label class="radio-label">
-                <input type="radio" name="attendance" value="No" onclick="toggleRSVP(false)">
-                Regretfully Decline
-            </label>
-        </div>
+
+<div class="form-group">
+    <label>Will you be attending?</label>
+    <div class="radio-group">
+        <label class="radio-label">
+            <input type="radio" name="attendance" value="Yes" onclick="toggleRSVP(true)" required>
+            Joyfully Accept
+        </label>
+        <label class="radio-label">
+            <input type="radio" name="attendance" value="No" onclick="toggleRSVP(false)">
+            Regretfully Decline
+        </label>
     </div>
+</div>
 
-    <div id="conditional-fields">
-        
-        <div class="form-group">
-            <label for="guests">Number of Guests</label>
-            <select id="guests" name="guest-count">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </div>
+<div id="guest-fields" class="hidden">
+    <div class="form-group">
+        <label for="guests">Number of Guests</label>
+        <select id="guests" name="guest-count">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+</div>
 
-        <div class="form-group">
-            <label for="dietary">Dietary Restrictions or Song Requests</label>
-            <textarea id="dietary" name="notes" rows="4"></textarea>
-        </div>
-
-    </div> 
+<div id="note-fields" class="hidden">
+    <div class="form-group">
+        <label for="notes" id="notes-label">Dietary Restrictions, Song Requests, or Other Notes</label>
+        <textarea id="notes" name="notes" rows="4"></textarea>
+    </div>
+</div>
     <button type="submit" class="submit-btn">Send RSVP</button>
 </form>
 
