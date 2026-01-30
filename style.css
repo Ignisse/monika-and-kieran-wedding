@@ -55,8 +55,7 @@ body {
     display: none !important;
 }
 
-#rsvp-success,
-#conditional-fields {
+#rsvp-success{
     display: none;
 }
 /* Gateway Styles */
@@ -253,6 +252,15 @@ nav {
     text-align: center;
     position: relative; 
     z-index: 2;
+}
+
+#story *{
+    margin-bottom: 10px;
+}
+
+#story p {
+    text-align: justify;
+    text-indent: 1rem;
 }
 
 /* Timeline / Events Area */
@@ -466,11 +474,6 @@ input:focus, select:focus, textarea:focus {
     margin-top: 1rem;
 }
 
-#conditional-fields,
-#rsvp-success,
-.hidden {
-    display: none !important;
-}
 
 /* Back to Top Button */
 #backToTop {

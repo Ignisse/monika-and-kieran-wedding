@@ -37,7 +37,10 @@ function resetForm() {
     const notesLabel = document.getElementById('notes-label');
     
     // Reset Form UI
-    if (successMsg) successMsg.style.display = "none"; // Or use classList.add('hidden') if you prefer
+    if (successMsg) {
+        successMsg.classList.add('hidden'); // Re-lock it
+        successMsg.style.display = "none";
+    } // Or use classList.add('hidden') if you prefer
     if (form) {
         form.reset();
         form.style.display = "block"; // Or use classList.remove('hidden')
@@ -108,8 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
             subText.innerText = "You will be missed!";
         }
 
-        form.style.display = "none";
-        if(successMsg) successMsg.style.display = "block";
+        form.classList.add('hidden'); 
+    if (successMsg) {
+        successMsg.classList.remove('hidden'); // Remove the CSS lock
+        successMsg.style.display = "block";
     }
 })
         });
