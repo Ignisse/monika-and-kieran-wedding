@@ -78,47 +78,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- AJAX Form Submission ---
-    const form = document.querySelector("form[name='rsvp']");
-    const successMsg = document.getElementById("rsvp-success");
+   // --- AJAX Form Submission ---
+if (form) {
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    if (form) {
-        form.addEventListener("submit", (e) => {
-            e.preventDefault(); // Stop page reload
-
-            const formData = new FormData(form);
-
-            fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString(),
-            })
-            .then((response) => {
-    if (response.ok) {
-        // Get the values to see what they picked
         const formData = new FormData(form);
-        const isAttending = formData.get('attendance') === 'Yes';
-        
-        const mainText = document.getElementById("success-text");
-        const subText = document.getElementById("success-subtext");
 
-        // Swap the message based on their choice
-        if (isAttending) {
-            mainText.innerText = "Your RSVP has been sent.";
-            subText.innerText = "We can't wait to see you!";
-        } else {
-            mainText.innerText = "Thank you for letting us know.";
-            subText.innerText = "You will be missed!";
-        }
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+        .then((response) => {
+            if (response.ok) {
+                const isAttending = formData.get('attendance') === 'Yes';
+                const mainText = document.getElementById("success-text");
+                const subText = document.getElementById("success-subtext");
 
-        form.classList.add('hidden'); 
-    if (successMsg) {
-        successMsg.classList.remove('hidden'); // Remove the CSS lock
-        successMsg.style.display = "block";
-    }
-})
+                if (isAttending) {
+                    mainText.innerText = "Your RSVP has been sent.";
+                    subText.innerText = "We can't wait to see you!";
+                } else {
+                    mainText.innerText = "Thank you for letting us know.";
+                    subText.innerText = "You will be missed!";
+                }
+
+                // Hide form and show success message
+                form.classList.add('hidden'); 
+                if (successMsg) {
+                    successMsg.classList.remove('hidden');
+                    successMsg.style.display = "block";
+                }
+            } // Closing if (response.ok)
+        }) // Closing .then()
+        .catch((error) => {
+            alert("Oops! Something went wrong. Please try again.");
         });
-    }
+    });
+}
 
     //mobile menu toggle//
     const menu = document.querySelector('#mobile-menu');

@@ -507,6 +507,14 @@ input:focus, select:focus, textarea:focus {
     transform: translateY(-5px);
 }
 
+.hidden {
+    display: none !important;
+}
+
+#rsvp-success {
+    display: none;
+}
+
 /* Mobile Tweak */
 @media (max-width: 768px) {
     .gateway-card {
