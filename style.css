@@ -754,3 +754,47 @@ nav .lang-switch .lang-btn.active {
         margin-left: auto;
     }
 }
+
+/* --- Q&A Styles --- */
+.qa-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.qa-item {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.qa-item:last-child {
+    border-bottom: none;
+}
+
+.qa-item h3 {
+    color: var(--primary-orange);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.qa-item p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- Gifts Styles --- */
+.gift-content {
+    max-width: 600px;
+    margin: 0 auto;
+    font-style: italic;
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    padding: 1rem;
+    background-color: #fcfcfc;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}

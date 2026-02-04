@@ -207,6 +207,16 @@ function unlockSite(type) {
     const ceremonyBlock = document.getElementById('ceremony-block');
     const receptionTime = document.getElementById('reception-time');
 
+    // Handle Day-Only content (Q&A, specific text)
+    const dayOnlyElements = document.querySelectorAll('.day-only');
+    dayOnlyElements.forEach(el => {
+        if (type === 'evening') {
+            el.classList.add('hidden');
+        } else {
+            el.classList.remove('hidden');
+        }
+    });
+
     if (type === 'evening') {
         // --- EVENING GUESTS ---
         // Hide the Ceremony block
@@ -222,8 +232,12 @@ function unlockSite(type) {
         // Ensure Ceremony block is visible
         if (ceremonyBlock) ceremonyBlock.classList.remove('hidden');
         
-        // HIDE the reception time (implies continuous flow)
-        if (receptionTime) receptionTime.classList.add('hidden');
+        // RECEPTION TIME LOGIC CHANGED HERE:
+        // Show 14:00 instead of hiding it
+        if (receptionTime) {
+            receptionTime.innerText = '14:00';
+            receptionTime.classList.remove('hidden');
+        }
     }
 
     localStorage.setItem('wedding_access', type);
