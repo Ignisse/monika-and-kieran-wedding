@@ -1,6 +1,6 @@
 // !!! CRITICAL: PASTE YOUR GOOGLE SCRIPT URL BETWEEN THE QUOTES BELOW !!!
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzi_cAuZXLJc-IlikzlGaM2CwM4JYvKZuyTrOwCJSAnivqI1kTawmaQ4valkvTe_MIoxg/exec"; 
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby4tob4fwwtwyLZlmufLZW_eZpbEaxB-xuSxTCNXlQ3RbBbo4bsI-HAwnsU_EaKdNziKg/exec"; 
 
 // script.js
 function setLanguage(lang) {
@@ -89,8 +89,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
         .then(() => {
-            // Because of no-cors, we assume it worked if we get here.
-            const successMsg = document.getElementById("rsvp-success"); 
+            // Success Logic
+            const successMsg = document.getElementById("rsvp-success");
+            const msgYes = document.getElementById('msg-yes');
+            const msgNo = document.getElementById('msg-no');
+            
+            // Reset visibility
+            if (msgYes) msgYes.classList.add('hidden');
+            if (msgNo) msgNo.classList.add('hidden');
+
+            // Show correct message based on attendance
+            if (isAttending && msgYes) {
+                msgYes.classList.remove('hidden');
+            } else if (!isAttending && msgNo) {
+                msgNo.classList.remove('hidden');
+            }
+
+            // Show main container
             form.classList.add('hidden'); 
             if (successMsg) {
                 successMsg.classList.remove('hidden');

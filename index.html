@@ -394,14 +394,28 @@
 </form>
 
 <div id="rsvp-success" class="success-message hidden">
-    <div class="lang-en">
-        <h3>Thank You!</h3>
-        <p>Your RSVP has been sent.</p>
+    <!-- Message for Attending (Yes) -->
+    <div id="msg-yes" class="hidden">
+        <div class="lang-en">
+             <h3>Hooray!</h3>
+             <p>Your RSVP has been sent. We can't wait to see you!</p>
+        </div>
+        <div class="lang-sk">
+             <h3>Hurá!</h3>
+             <p>Vaša odpoveď bola odoslaná. Tešíme sa na vás!</p>
+        </div>
     </div>
-    
-    <div class="lang-sk">
-        <h3>Ďakujeme!</h3>
-        <p>Vaša odpoveď bola odoslaná.</p>
+
+    <!-- Message for Not Attending (No) -->
+    <div id="msg-no" class="hidden">
+        <div class="lang-en">
+             <h3>Thank You</h3>
+             <p>Thank you for letting us know. You will be missed!</p>
+        </div>
+        <div class="lang-sk">
+             <h3>Ďakujeme</h3>
+             <p>Ďakujeme, že ste nám dali vedieť. Budete nám chýbať!</p>
+        </div>
     </div>
     
     <button onclick="resetForm()" class="cta-button small-btn">
