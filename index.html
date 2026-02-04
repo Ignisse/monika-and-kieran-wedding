@@ -62,6 +62,18 @@
                 <span class="lang-en">Travel & Stay</span>
                 <span class="lang-sk">Doprava a ubytovanie</span>
             </a>
+        </li>
+         <li>
+            <a href="#qa">
+                <span class="lang-en">Q&A</span>
+                <span class="lang-sk">Otázky</span>
+            </a>
+        </li>
+         <li>
+            <a href="#gifts">
+                <span class="lang-en">Gifts</span>
+                <span class="lang-sk">Dary</span>
+            </a>
         </li> 
         <li>
             <a href="#rsvp">
@@ -321,18 +333,14 @@
         <span class="lang-en">We can't wait to celebrate with you! Please respond by 5 April, 2026.</span>
         <span class="lang-sk">Tešíme sa, že to s nami oslávite! Prosím potvrďte účasť do 5. apríla 2026.</span>
     </p>
-  <form name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/" class="rsvp-form">
-    <input type="hidden" name="form-name" value="rsvp">
-
-    <p class="hidden">
-        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-    </p>
-
+  <form id="rsvp-form" class="rsvp-form">
+    
     <div class="form-group">
         <label for="full-name">
             <span class="lang-en">Full Name(s)</span>
             <span class="lang-sk">Celé Meno (Mená)</span>
         </label>
+        <!-- Reverted name="subject" to "subject" because Google Script maps it to 'Name' -->
         <input type="text" id="full-name" name="subject" autocomplete="name" placeholder="e.g. Jane Doe & Plus One" required>
     </div>
 
@@ -379,7 +387,7 @@
         <textarea id="notes" name="notes" rows="4"></textarea>
     </div>
 </div>
-    <button type="submit" class="submit-btn">
+    <button type="submit" id="submit-btn" class="submit-btn">
         <span class="lang-en">Send RSVP</span>
         <span class="lang-sk">Odoslať</span>
     </button>
@@ -405,7 +413,26 @@
 
 <button id="backToTop" title="Go to top">↑</button>
 </main>
-<footer></footer>
+<footer>
+<div class="footer-content">
+        <p class="names-footer">Monika & Kieran</p>
+        <p class="date-footer">16 • 05 • 2026</p>
+        
+        <!-- NEW: Hashtag Section -->
+        <p class="hashtag">#MonikaAndKieran2026</p>
+
+        <p class="contact-footer">
+            <span class="lang-en">Questions? Email us at <a href="mailto:kizzalloyd@hotmail.com">wedding@monikaandkieran.com</a></span>
+            <span class="lang-sk">Otázky? Napíšte nám na <a href="mailto:wedding@monikaandkieran.com">wedding@monikaandkieran.com</a></span>
+        </p>
+        
+        <p class="copyright">
+            <span class="lang-en">Made with ❤️ by the Bride & Groom</span>
+            <span class="lang-sk">Vyrobené s ❤️ nevestou a ženíchom</span>
+        </p>
+    </div>
+
+</footer>
  </div>
 <script src="script.js"></script>
 </body>
