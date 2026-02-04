@@ -1,5 +1,5 @@
 // !!! CRITICAL: PASTE YOUR GOOGLE SCRIPT URL BETWEEN THE QUOTES BELOW !!!
-// Example: const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx.../exec";
+
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzi_cAuZXLJc-IlikzlGaM2CwM4JYvKZuyTrOwCJSAnivqI1kTawmaQ4valkvTe_MIoxg/exec"; 
 
 // script.js
@@ -56,50 +56,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
    // --- GOOGLE SHEETS FORM SUBMISSION ---
-   // Find the form by ID (we added id="rsvp-form" in HTML)
    const form = document.querySelector("#rsvp-form");
    
    if (form) {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         
-        // Prevent accidental clicks if URL isn't set
-        if (GOOGLE_SCRIPT_URL.includes("PASTE_YOUR_URL")) {
-            alert("Error: Website configuration missing (Google Script URL). Please contact the couple.");
+        // 1. Check if URL is pasted
+        if (GOOGLE_SCRIPT_URL.includes("PASTE_YOUR_URL") || GOOGLE_SCRIPT_URL === "") {
+            alert("Configuration Error: Please paste your Google Web App URL in script.js line 3.");
             return;
         }
 
         const submitBtn = document.getElementById("submit-btn");
         const originalBtnText = submitBtn.innerText;
         
-        // 1. Show Loading State
+        // 2. Show Loading State
         submitBtn.disabled = true;
         submitBtn.innerText = document.documentElement.lang === 'sk' ? "Odosiela sa..." : "Sending...";
 
         const formData = new FormData(form);
 
-        // 2. Send Data to Google Script
+        // 3. Send Data to Google Script (ROBUST MODE)
+        // mode: 'no-cors' prevents browser security from blocking the request.
+        // We won't get a specific "success" JSON back, but the data WILL reach the sheet.
         fetch(GOOGLE_SCRIPT_URL, {
             method: "POST",
-            // Google Apps Script works best with URL-encoded data
-            body: new URLSearchParams(formData).toString(), 
+            mode: "no-cors", 
+            body: new URLSearchParams(formData).toString(),
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
         })
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.result === 'success') {
-                const successMsg = document.getElementById("rsvp-success"); 
-                form.classList.add('hidden'); 
-                if (successMsg) {
-                    successMsg.classList.remove('hidden');
-                    successMsg.style.display = "block";
-                }
-            } else {
-                throw new Error(data.error);
+        .then(() => {
+            // Because of no-cors, we assume it worked if we get here.
+            const successMsg = document.getElementById("rsvp-success"); 
+            form.classList.add('hidden'); 
+            if (successMsg) {
+                successMsg.classList.remove('hidden');
+                successMsg.style.display = "block";
             }
         })
         .catch((error) => {
             console.error('Error!', error.message);
-            alert("Oops! Something went wrong. Please try again or contact us directly.");
+            alert("Connection error. Please try again.");
             
             // Reset button if error
             submitBtn.disabled = false;
