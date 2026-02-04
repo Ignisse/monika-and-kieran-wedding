@@ -2,7 +2,6 @@
 
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby4tob4fwwtwyLZlmufLZW_eZpbEaxB-xuSxTCNXlQ3RbBbo4bsI-HAwnsU_EaKdNziKg/exec"; 
 
-// script.js
 function setLanguage(lang) {
     document.documentElement.lang = lang;
     localStorage.setItem('wedding_lang', lang);
@@ -76,47 +75,51 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerText = document.documentElement.lang === 'sk' ? "Odosiela sa..." : "Sending...";
 
         const formData = new FormData(form);
+        const isAttending = formData.get('attendance') === 'Yes';
 
-        // 3. Send Data to Google Script (ROBUST MODE)
-        // mode: 'no-cors' prevents browser security from blocking the request.
-        // We won't get a specific "success" JSON back, but the data WILL reach the sheet.
+        // 3. Send Data to Google Script (STANDARD MODE)
+        // We removed 'no-cors', so we can now read the response.json()
         fetch(GOOGLE_SCRIPT_URL, {
             method: "POST",
-            mode: "no-cors", 
             body: new URLSearchParams(formData).toString(),
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
+            // We let the browser set the content type automatically for URLSearchParams
         })
-        .then(() => {
-            // Success Logic
-            const successMsg = document.getElementById("rsvp-success");
-            const msgYes = document.getElementById('msg-yes');
-            const msgNo = document.getElementById('msg-no');
-            
-            // Reset visibility
-            if (msgYes) msgYes.classList.add('hidden');
-            if (msgNo) msgNo.classList.add('hidden');
+        .then((response) => response.json()) // We expect JSON back from Google
+        .then((data) => {
+            if (data.result === 'success') {
+                // SUCCESS LOGIC
+                const successMsg = document.getElementById("rsvp-success");
+                const msgYes = document.getElementById('msg-yes');
+                const msgNo = document.getElementById('msg-no');
+                
+                // Reset visibility
+                if (msgYes) msgYes.classList.add('hidden');
+                if (msgNo) msgNo.classList.add('hidden');
 
-            // Show correct message based on attendance
-            if (isAttending && msgYes) {
-                msgYes.classList.remove('hidden');
-            } else if (!isAttending && msgNo) {
-                msgNo.classList.remove('hidden');
-            }
+                // Show correct message based on attendance
+                if (isAttending && msgYes) {
+                    msgYes.classList.remove('hidden');
+                } else if (!isAttending && msgNo) {
+                    msgNo.classList.remove('hidden');
+                }
 
-            // Show main container
-            form.classList.add('hidden'); 
-            if (successMsg) {
-                successMsg.classList.remove('hidden');
-                successMsg.style.display = "block";
+                // Hide form, show success
+                form.classList.add('hidden'); 
+                if (successMsg) {
+                    successMsg.classList.remove('hidden');
+                    successMsg.style.display = "block";
+                }
+            } else {
+                // LOGICAL ERROR (Script ran, but returned 'error')
+                throw new Error(data.error || 'Unknown script error');
             }
         })
         .catch((error) => {
-            console.error('Error!', error.message);
-            alert("Connection error. Please try again.");
+            // NETWORK ERROR (CORS, Offline, or Script Crash)
+            console.error('Submission Error:', error);
+            alert("Something went wrong connecting to the server. Please try again.");
             
-            // Reset button if error
+            // Reset button so they can try again
             submitBtn.disabled = false;
             submitBtn.innerText = originalBtnText;
         });
@@ -167,11 +170,17 @@ function resetForm() {
     const form = document.querySelector("#rsvp-form");
     const successMsg = document.getElementById("rsvp-success");
     const guestFields = document.getElementById('guest-fields');
+    const msgYes = document.getElementById('msg-yes');
+    const msgNo = document.getElementById('msg-no');
     
     if (successMsg) {
         successMsg.classList.add('hidden'); 
         successMsg.style.display = "none";
-    } 
+    }
+    
+    if (msgYes) msgYes.classList.add('hidden');
+    if (msgNo) msgNo.classList.add('hidden');
+
     if (form) {
         form.reset();
         form.classList.remove('hidden');
