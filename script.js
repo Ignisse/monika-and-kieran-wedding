@@ -81,8 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // We removed 'no-cors', so we can now read the response.json()
         fetch(GOOGLE_SCRIPT_URL, {
             method: "POST",
-            body: new URLSearchParams(formData).toString(),
-            // We let the browser set the content type automatically for URLSearchParams
+            body: formData,
         })
         .then((response) => response.json()) // We expect JSON back from Google
         .then((data) => {
