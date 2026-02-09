@@ -156,12 +156,12 @@ function toggleRSVP(isAttending) {
     if (noteFields) noteFields.classList.remove('hidden');
 
     if (isAttending) {
-        if (guestFields) guestFields.classList.remove('hidden');
-        if (guestInput) guestInput.setAttribute('required', 'true');
-    } else {
-        if (guestFields) guestFields.classList.add('hidden');
-        if (guestInput) guestInput.removeAttribute('required');
-    }
+    if (guestFields) guestFields.classList.remove('hidden');
+    if (guestInput) guestInput.required = true; // Cleaner JS
+} else {
+    if (guestFields) guestFields.classList.add('hidden');
+    if (guestInput) guestInput.required = false; // Cleaner JS
+}
     updateDynamicText(document.documentElement.lang);
 }
 

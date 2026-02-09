@@ -133,7 +133,7 @@ nav {
     display: flex;
     gap: 30px;
     margin: 0;
-    align-items: center; /* Ensures switcher aligns with text */
+    align-items: center;
 }
 
 .nav-links a {
@@ -156,7 +156,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 15px;
-    z-index: 1002; /* Ensure above overlay */
+    z-index: 1002;
 }
 
 .menu-toggle {
@@ -175,8 +175,8 @@ nav {
 
 /* 3. Hero Section (Framed Style) */
 .hero {
-    height: 100vh; /* Full screen height */
-    height: 100dvh;/* Dynamic Viewport Height */
+    height: 100vh; 
+    height: 100dvh;
     position: relative; 
     display: flex;
     justify-content: center;
@@ -375,6 +375,39 @@ nav {
 
 .practical-list a:hover {
     text-decoration: underline;
+}
+
+/* --- Photo Upload Section --- */
+.photo-upload-section {
+    text-align: center;
+    padding: 4rem 1rem; /* Adjusts spacing around the section */
+}
+
+/* The wrapper for the bottom hashtag area */
+.hashtag-wrapper {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0; /* Subtle divider line */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* The main hashtag text */
+.hashtag {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* The "Tag us on Instagram" subtext */
+.hashtag-sub {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #666; /* Softer gray for secondary text */
+    margin: 0;
 }
 
 /* RSVP Form Styles */
@@ -628,7 +661,7 @@ footer {
         flex-direction: column;
         background-color: var(--primary-blue);
         width: 100%;
-        height: 100vh;
+        height: 100dvh;
         justify-content: center;
         align-items: center;
         transition: 0.3s;
@@ -725,7 +758,7 @@ html[lang="sk"] .lang-en {
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
-    cursor: default; /* Cursor handled by buttons */
+    cursor: default;
     position: relative; 
     z-index: 50; 
 }
@@ -748,7 +781,7 @@ html[lang="sk"] .lang-en {
     font-size: 1rem;
     color: #888;
     background: white;
-    min-width: 50px; /* Ensure consistent width */
+    min-width: 50px; 
 }
 
 .gateway-card .lang-switch .lang-btn:hover {
@@ -771,7 +804,6 @@ html[lang="sk"] .lang-en {
     margin-bottom: 0; 
 }
 
-/* Use a simple slash separator for compact look */
 .nav-lang-switch .separator {
     color: rgba(255, 255, 255, 0.5);
     font-size: 0.9rem;
@@ -782,7 +814,7 @@ nav .lang-switch .lang-btn {
     color: rgba(255, 255, 255, 0.7); 
     font-size: 0.9rem;
     padding: 5px; 
-    border: none; /* No border for compact look */
+    border: none; 
     border-radius: 4px;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -796,12 +828,10 @@ nav .lang-switch .lang-btn:hover {
 nav .lang-switch .lang-btn.active {
     color: white;
     font-weight: bold;
-    background: rgba(255,255,255,0.15); /* Subtle background for active */
+    background: rgba(255,255,255,0.15);
 }
 
-/* Mobile Tweak overrides */
 @media (max-width: 768px) {
-    /* ... existing mobile styles ... */
     .menu-toggle {
         display: flex; 
         z-index: 1001;
@@ -819,48 +849,16 @@ nav .lang-switch .lang-btn.active {
         align-items: center;
         transition: 0.3s;
         z-index: 1000;
-        margin-right: 0; /* Reset desktop margin */
+        margin-right: 0;
     }
 
-    /* Remove the old switcher from inside the menu if it existed */
     .nav-links .lang-switch {
         display: none;
     }
 
     .nav-actions {
-        /* Ensure actions stay on the right */
         margin-left: auto;
     }
-}
-
-/* --- Q&A Styles --- */
-.qa-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    text-align: left;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.qa-item {
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
-}
-
-.qa-item:last-child {
-    border-bottom: none;
-}
-
-.qa-item h3 {
-    color: var(--primary-orange);
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.qa-item p {
-    color: #555;
-    line-height: 1.6;
 }
 
 /* --- Gifts Styles --- */
