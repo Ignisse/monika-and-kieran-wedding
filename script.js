@@ -78,12 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const isAttending = formData.get('attendance') === 'Yes';
 
         // 3. Send Data to Google Script (STANDARD MODE)
-        // We removed 'no-cors', so we can now read the response.json()
         fetch(GOOGLE_SCRIPT_URL, {
             method: "POST",
             body: formData,
         })
-        .then((response) => response.json()) // We expect JSON back from Google
+        .then((response) => response.json())
         .then((data) => {
             if (data.result === 'success') {
                 // SUCCESS LOGIC
