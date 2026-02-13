@@ -75,7 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerText = document.documentElement.lang === 'sk' ? "Odosiela sa..." : "Sending...";
 
         const formData = new FormData(form);
+
+        // Append the access type (Ceremony/Evening) recorded during login
+        const guestType = localStorage.getItem('wedding_access') || 'Unknown';
+        formData.append('guest_type', guestType);
+
         const isAttending = formData.get('attendance') === 'Yes';
+
+        if (!isAttending) {
+            formData.set('guest-count', '0');
+        }
 
         // 3. Send Data to Google Script (STANDARD MODE)
         fetch(GOOGLE_SCRIPT_URL, {
